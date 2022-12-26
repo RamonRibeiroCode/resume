@@ -23,11 +23,12 @@ function Footer() {
       <div className="flex h-full">
         {socialMedias.map((media) => (
           <a
-            key={media.name}
-            target="_blank"
             className="flex justify-center items-center w-14 border-l border-line-gray"
+            key={media.name}
             href={media.href}
+            target="_blank"
             rel="noreferrer"
+            aria-label={`Link para rede social ${media.name}`}
           >
             <Icon
               className="opacity-40 hover:opacity-100"
