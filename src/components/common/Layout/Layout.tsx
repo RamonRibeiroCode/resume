@@ -7,7 +7,7 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen p-4 bg-primary-black">
+    <div className="flex flex-col min-h-screen p-4 bg-primary-black xl:p-[70px]">
       <div className="flex flex-col flex-1 bg-primary-blue-default border border-line-gray rounded-lg">
         <Header />
 

@@ -2,12 +2,12 @@
 module.exports = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
   theme: {
-    screens: {
-      "3xs": "280px",
-      "2xs": "320px",
-      xs: "360px",
-    },
     extend: {
+      screens: {
+        "3xs": "280px",
+        "2xs": "320px",
+        xs: "360px",
+      },
       fontSize: {
         heading: "3.875rem",
         "sub-heading": "2rem",
@@ -41,6 +41,7 @@ module.exports = {
           green: "#43D9AD",
         },
       },
+      spacing: {},
     },
   },
   plugins: [],

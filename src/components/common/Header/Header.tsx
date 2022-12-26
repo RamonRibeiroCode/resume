@@ -2,7 +2,7 @@ import Icon from "../../ui/Icon"
 
 function Header() {
   return (
-    <header className="flex justify-between items-center p-4 border-b border-line-gray">
+    <header className="flex justify-between items-center p-4 border-b border-line-gray z-10">
       <span className="text-base text-secondary-gray">ramon-ribeiro</span>
 
       <Icon name="MenuHam" width={18} height={16} />
