@@ -1,4 +1,3 @@
-import Icon from "../../ui/Icon"
 import FooterLink from "./FooterLink"
 
 const socialMedias = [
@@ -19,7 +18,7 @@ function Footer() {
         find me in:
       </span>
 
-      <div className="flex h-full xl:flex-1">
+      <ul className="flex h-full xl:flex-1">
         {socialMedias.map((media, index) => (
           <FooterLink
             key={media.name}
@@ -39,7 +38,7 @@ function Footer() {
             @RamonRibeiroCode
           </span>
         </FooterLink>
-      </div>
+      </ul>
     </footer>
   )
 }

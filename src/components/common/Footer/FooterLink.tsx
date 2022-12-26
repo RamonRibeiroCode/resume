@@ -17,24 +17,28 @@ function FooterLink({
   children,
 }: FooterLinkProps) {
   return (
-    <a
-      className={`flex justify-center items-center w-14 border-l border-line-gray ${
+    <li
+      className={`w-14 h-full ${
         lastChild ? "xl:border-r" : ""
-      } ${extraClasses}`}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Link para rede social ${name}`}
+      } border-l border-line-gray ${extraClasses}`}
     >
-      {children}
+      <a
+        className="h-full flex justify-center items-center"
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Link para rede social ${name}`}
+      >
+        {children}
 
-      <Icon
-        className="opacity-40 hover:opacity-100"
-        name={name}
-        width={24}
-        height={24}
-      />
-    </a>
+        <Icon
+          className="opacity-40 hover:opacity-100"
+          name={name}
+          width={24}
+          height={24}
+        />
+      </a>
+    </li>
   )
 }
 
