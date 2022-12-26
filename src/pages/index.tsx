@@ -4,11 +4,11 @@ import blurMobile from "../assets/imgs/home/blur-mobile.png"
 import blurDesktop from "../assets/imgs/home/blur-desktop.png"
 import snakeGame from "../assets/imgs/home/snake-game.png"
 
-export default function Home() {
+function Home() {
   return (
     <>
       <div className="flex px-4 flex-1 z-10 xs:px-7 xl:justify-center">
-        <div className="flex flex-col justify-between xl:justify-center">
+        <div className="flex flex-col justify-between xl:justify-center z-10">
           <div className="mt-24 xl:mb-20">
             <h1 className="text-base text-secondary-off-white xs:text-lg">
               Hi all. I am
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center relative">
+        <div className="flex items-center relative z-0">
           <Image
             className="hidden fixed right-0 xl:block"
             src={blurDesktop}
@@ -68,3 +68,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
