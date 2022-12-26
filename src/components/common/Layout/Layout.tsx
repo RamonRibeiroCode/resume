@@ -11,7 +11,7 @@ function Layout({ children }: LayoutProps) {
       <div className="flex flex-col flex-1 bg-primary-blue-default border border-line-gray rounded-lg">
         <Header />
 
-        <main className="flex-1">{children}</main>
+        <main className="flex flex-col flex-1">{children}</main>
 
         <Footer />
       </div>

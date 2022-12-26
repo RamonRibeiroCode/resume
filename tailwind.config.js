@@ -2,6 +2,11 @@
 module.exports = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
   theme: {
+    screens: {
+      "3xs": "280px",
+      "2xs": "320px",
+      xs: "360px",
+    },
     extend: {
       fontSize: {
         heading: "3.875rem",
@@ -20,6 +25,7 @@ module.exports = {
           green: "#3C9D93",
           purple: "#4D5BCE",
           white: "#FFFFFF",
+          "off-white": "#E5E9F0",
         },
         accent: {
           orange: "#FEA55F",

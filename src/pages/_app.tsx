@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </style>
 
       <Head>
-        <title>Ramon</title>
+        <title>Ramon Ribeiro</title>
         <meta name="description" content="Ramon Ribeiro Resume" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
