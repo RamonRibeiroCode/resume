@@ -1,39 +1,21 @@
-import Head from "next/head";
-import { Fira_Code } from "@next/font/google";
 import Header from "../Header";
+import Footer from "../Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const firaCode = Fira_Code({
-  subsets: ["latin"],
-});
-
 function Layout({ children }: LayoutProps) {
   return (
-    <>
-      <style jsx global>
-        {`
-          html {
-            font-family: ${firaCode.style.fontFamily};
-          }
-        `}
-      </style>
+    <div className="flex flex-col min-h-screen p-4 bg-primary-black">
+      <div className="flex flex-col flex-1 bg-primary-blue-default border border-line-gray rounded-lg">
+        <Header />
 
-      <Head>
-        <title>Ramon</title>
-        <meta name="description" content="Ramon Ribeiro Resume" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <main className="flex-1">{children}</main>
 
-      <Header />
-
-      <main>{children}</main>
-
-      <footer>Footer</footer>
-    </>
+        <Footer />
+      </div>
+    </div>
   );
 }
 
