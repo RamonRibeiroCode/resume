@@ -1,4 +1,5 @@
 import Icon from "../../ui/Icon"
+import FooterLink from "./FooterLink"
 
 const socialMedias = [
   {
@@ -20,43 +21,24 @@ function Footer() {
 
       <div className="flex h-full xl:flex-1">
         {socialMedias.map((media, index) => (
-          <a
-            className={`flex justify-center items-center w-14 border-l border-line-gray ${
-              index + 1 === socialMedias.length ? "xl:border-r" : ""
-            }`}
+          <FooterLink
             key={media.name}
+            name={media.name}
             href={media.href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Link para rede social ${media.name}`}
-          >
-            <Icon
-              className="opacity-40 hover:opacity-100"
-              name={media.name}
-              width={24}
-              height={24}
-            />
-          </a>
+            lastChild={index + 1 === socialMedias.length}
+          />
         ))}
 
-        <a
-          className="flex justify-center items-center w-14 border-l border-line-gray xl:ml-auto xl:w-auto xl:px-6"
+        <FooterLink
+          name="Github"
           href="https://github.com/RamonRibeiroCode"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Link para rede social Github"
+          lastChild={false}
+          extraClasses="xl:ml-auto xl:w-auto xl:px-6"
         >
-          <span className="text-xs text-secondary-gray mr-1">
+          <span className="hidden text-xs text-secondary-gray mr-1 xl:block">
             @RamonRibeiroCode
           </span>
-
-          <Icon
-            className="opacity-40 hover:opacity-100"
-            name="Github"
-            width={24}
-            height={24}
-          />
-        </a>
+        </FooterLink>
       </div>
     </footer>
   )

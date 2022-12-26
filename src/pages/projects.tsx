@@ -1,3 +1,5 @@
-export default function Home() {
+function Projects() {
   return <h1>Ola</h1>
 }
+
+export default Projects
