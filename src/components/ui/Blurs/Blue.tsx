@@ -1,5 +1,5 @@
 interface BlueProps {
-  className?: string;
+  className?: string
 }
 
 function Blue({ className }: BlueProps) {
@@ -43,7 +43,7 @@ function Blue({ className }: BlueProps) {
         </defs>
       </svg>
     </div>
-  );
+  )
 }
 
-export default Blue;
+export default Blue

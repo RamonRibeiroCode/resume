@@ -1,5 +1,5 @@
 interface GreenProps {
-  className?: string;
+  className?: string
 }
 
 function Green({ className }: GreenProps) {
@@ -43,7 +43,7 @@ function Green({ className }: GreenProps) {
         </defs>
       </svg>
     </div>
-  );
+  )
 }
 
-export default Green;
+export default Green

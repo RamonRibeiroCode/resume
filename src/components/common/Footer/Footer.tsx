@@ -1,4 +1,4 @@
-import Icon from "../../ui/Icon";
+import Icon from "../../ui/Icon"
 
 const socialMedias = [
   {
@@ -13,7 +13,7 @@ const socialMedias = [
     name: "Github",
     href: "https://github.com/RamonRibeiroCode",
   },
-];
+]
 
 function Footer() {
   return (
@@ -23,9 +23,11 @@ function Footer() {
       <div className="flex h-full">
         {socialMedias.map((media) => (
           <a
+            key={media.name}
             target="_blank"
             className="flex justify-center items-center w-14 border-l border-line-gray"
             href={media.href}
+            rel="noreferrer"
           >
             <Icon
               className="opacity-40 hover:opacity-100"
@@ -37,7 +39,7 @@ function Footer() {
         ))}
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

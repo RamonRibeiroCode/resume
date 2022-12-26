@@ -1,13 +1,13 @@
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { Fira_Code } from "@next/font/google";
+import type { AppProps } from "next/app"
+import Head from "next/head"
+import { Fira_Code } from "@next/font/google"
 
-import Layout from "../components/common/Layout";
-import "../styles/globals.css";
+import Layout from "../components/common/Layout"
+import "../styles/globals.css"
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
-});
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -31,5 +31,5 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Layout>
     </>
-  );
+  )
 }

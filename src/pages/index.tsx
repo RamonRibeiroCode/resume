@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import Blurs from "../assets/imgs/Blurs.png";
+import Blurs from "../assets/imgs/Blurs.png"
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
 
       <div className="mb-9">
         <p className="text-sm text-secondary-gray">
-          // find my profile on Github:
+          {"// find my profile on Github:"}
         </p>
 
         <div className="text-sm mt-4">
@@ -39,5 +39,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import Icon from "../../ui/Icon";
+import Icon from "../../ui/Icon"
 
 function Header() {
   return (
@@ -7,7 +7,7 @@ function Header() {
 
       <Icon name="MenuHam" width={18} height={16} />
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header
