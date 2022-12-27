@@ -12,10 +12,8 @@ jobs:
     steps:
       - name: Add comment to PR
         id: loading_comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: mshick/add-pr-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}}
-          header: lighthouse
           message: |
-            Running Lighthouse audit...
+            **Hello**
+      🌏
