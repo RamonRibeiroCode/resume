@@ -19,16 +19,13 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+
+   - name: Add comment to PR
+        id: loading_comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v1
         with:
-          node-version: 16.x
-      - name: Npm install and build
-        run: |
-          npm install
-          npm run build
-          npm start
-      - name: Run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli@0.3.x
-          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+          header: lighthouse
+          message: |
+            Running Lighthouse audit...
