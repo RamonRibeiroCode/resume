@@ -1,7 +1,9 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { useState } from "react"
 
-import Icon from "../../ui/Icon"
+import Drawer from "./Drawer"
+import DrawerLink from "./DrawerLink"
 import HeaderLink from "./HeaderLink"
 
 const headerLinks = [
@@ -17,15 +19,20 @@ const headerLinks = [
     title: "_projects",
     href: "/projects",
   },
+  {
+    title: "_contact-me",
+    href: "/contact-me",
+  },
 ]
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
 
   return (
-    <header className="flex justify-between items-center h-14 px-4 border-b border-line-gray z-50 xl:pl-5 xl:pr-0">
+    <header className="relative flex justify-between items-center h-14 px-4 border-b border-line-gray z-50 xl:pl-5 xl:pr-0">
       <div className="flex h-full items-center flex-1">
-        <span className="block text-base text-secondary-gray xl: pr-32">
+        <span className="block text-base text-secondary-gray xl:pr-32">
           ramon-ribeiro
         </span>
 
@@ -36,24 +43,25 @@ function Header() {
               title={link.title}
               href={link.href}
               active={router.pathname === link.href}
-              lastChild={index + 1 === headerLinks.length}
+              penultimate={index + 2 === headerLinks.length}
             />
           ))}
-
-          <HeaderLink
-            key="_contact-me"
-            title="_contact-me"
-            href="/contact-me"
-            active={router.pathname === "/contact-me"}
-            lastChild={false}
-            extraClasses="ml-auto"
-          />
         </ul>
       </div>
 
-      <div>
-        <Icon className="xl:hidden" name="MenuHam" width={18} height={16} />
-      </div>
+      <Drawer open={menuOpen} setOpen={setMenuOpen}>
+        <ul>
+          {headerLinks.map((link) => (
+            <DrawerLink
+              key={link.title}
+              title={link.title}
+              href={link.href}
+              active={router.pathname === link.href}
+              setOpen={setMenuOpen}
+            />
+          ))}
+        </ul>
+      </Drawer>
     </header>
   )
 }

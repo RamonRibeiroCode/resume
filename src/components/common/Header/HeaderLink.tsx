@@ -3,24 +3,17 @@ import Link from "next/link"
 interface HeaderLinkProps {
   title: string
   href: string
-  lastChild: boolean
+  penultimate: boolean
   active: boolean
-  extraClasses?: string
 }
 
-function HeaderLink({
-  title,
-  href,
-  lastChild,
-  active,
-  extraClasses = "",
-}: HeaderLinkProps) {
+function HeaderLink({ title, href, penultimate, active }: HeaderLinkProps) {
   return (
     <li
       key={href}
-      className={`h-full border-l border-line-gray relative ${
-        lastChild ? "xl:border-r" : ""
-      } ${extraClasses}`}
+      className={`h-full border-l border-line-gray relative last:ml-auto ${
+        penultimate ? "border-r" : ""
+      }`}
     >
       <Link
         className={`h-full px-8 text-base flex items-center ${
