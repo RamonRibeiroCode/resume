@@ -2,14 +2,19 @@ import Image from "next/image"
 
 import blurMobile from "../assets/imgs/home/blur-mobile.png"
 import blurDesktop from "../assets/imgs/home/blur-desktop.png"
-import snakeGame from "../assets/imgs/home/snake-game.png"
+import dynamic from "next/dynamic"
+
+const SnakeGameWithNoSSR = dynamic(
+  () => import("../components/common/SnakeGame/SnakeGame"),
+  { ssr: false }
+)
 
 function Home() {
   return (
     <>
       <div className="flex px-4 flex-1 z-10 xs:px-7 xl:justify-center">
         <div className="flex flex-col justify-between xl:justify-center z-10">
-          <div className="mt-24 xl:mb-20">
+          <div className="mt-24 xl:mb-20 xl:mt-0">
             <h1 className="text-base text-secondary-off-white xs:text-lg">
               Hi all. I am
             </h1>
@@ -17,7 +22,7 @@ function Home() {
               Ramon Ribeiro
             </h2>
 
-            <p className="text-lg text-accent-green xs:text-xl xl:text-3xl xl:text-gradient-purple">
+            <p className="text-lg text-accent-green xs:text-xl xl:text-3xl xl:text-secondary-purple">
               {">"} Front-end developer
             </p>
           </div>
@@ -50,12 +55,9 @@ function Home() {
             draggable={false}
           />
 
-          <Image
-            className="hidden ml-20 object-contain z-10 xl:block 2xl:ml-32"
-            src={snakeGame}
-            alt="Snake Game"
-            draggable={false}
-          />
+          <div className="hidden ml-20 z-10 p-9 rounded-lg game-backdrop border border-[#0C1616] xl:flex 2xl:ml-32">
+            <SnakeGameWithNoSSR />
+          </div>
         </div>
       </div>
 

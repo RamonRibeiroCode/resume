@@ -1,5 +1,5 @@
 function AboutMe() {
-  return <h1>Ola</h1>
+  return <div></div>
 }
 
 export default AboutMe

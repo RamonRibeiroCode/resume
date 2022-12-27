@@ -8,5 +8,11 @@
 <!-- Actions -->
 <symbol id="MenuHam" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H18V2H0V0ZM0 7H18V9H0V7ZM0 14H18V16H0V14Z" fill="#607B96"/></symbol>
 
+<symbol id="GameArrowUp" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.50002 0.309143L8.75003 6.30914H0.25L4.50002 0.309143Z" fill="white"/></symbol>
+<symbol id="GameArrowLeft"  viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.0390623 4.80914L6.03906 0.559128L6.03906 9.05916L0.0390623 4.80914Z" fill="white"/></symbol>
+<symbol id="GameArrowDown" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.49998 6.80914L0.24997 0.809142L8.75 0.809143L4.49998 6.80914Z" fill="white"/></symbol>
+<symbol id="GameArrowRight"  viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.96045 4.80914L0.960449 9.05916L0.960449 0.559128L6.96045 4.80914Z" fill="white"/></symbol>
+
+
 </svg>
  

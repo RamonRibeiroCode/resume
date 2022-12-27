@@ -36,9 +36,8 @@ module.exports = {
         line: {
           gray: "#1E2D3D",
         },
-        gradient: {
-          purple: "#4D5BCE",
-          green: "#43D9AD",
+        shadow: {
+          game: "1px 5px 11px 0px #02121BB5 inset",
         },
       },
       spacing: {},
