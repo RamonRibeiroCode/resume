@@ -19,7 +19,6 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-
    Lighthouse:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +28,6 @@ jobs:
         with:
           urls: |
             /
-            /blog
           budgetPath: ./budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
