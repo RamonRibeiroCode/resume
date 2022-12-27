@@ -20,7 +20,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
-   - name: Add comment to PR
+      - name: Add comment to PR
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
