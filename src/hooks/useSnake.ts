@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react"
 
-const fruitsToWin = 10
+const fruitsToWin = 1
 
 function useSnake() {
   const [dim, setDim] = useState(0)

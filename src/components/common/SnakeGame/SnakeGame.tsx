@@ -59,7 +59,7 @@ function SnakeGame() {
 
         {(won || gameOver) && (
           <>
-            <div className="flex justify-center items-center absolute bottom-16 left-0 w-full h-12 bg-[#011627d9] shadow-shadow-game">
+            <div className="flex justify-center items-center absolute bottom-16 left-0 w-full h-12 bg-[#011627d9] shadow-game">
               <span className="text-2xl text-secondary-green">
                 {won ? "WELL DONE!" : "GAME OVER!"}
               </span>

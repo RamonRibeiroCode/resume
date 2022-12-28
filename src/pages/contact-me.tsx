@@ -3,7 +3,7 @@ import LabelPage from "../components/ui/LabelPage"
 import SideBar from "../components/ui/SideBar"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
 import FindMeLink from "../components/contact-me/FindMeLink"
-import Form from "../components/contact-me/Form"
+import ContactForm from "../components/contact-me/ContactForm"
 
 const contactLabels = [
   {
@@ -72,8 +72,8 @@ function ContactMe() {
         </Accordion>
       </SideBar>
 
-      <div className="flex-1 mt-9 xl:border-l xl:border-line-gray">
-        <Form />
+      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray">
+        <ContactForm />
       </div>
     </div>
   )

@@ -12,6 +12,10 @@ module.exports = {
         heading: "3.875rem",
         "sub-heading": "2rem",
       },
+      boxShadow: {
+        game: "1px 5px 11px 0px #02121BB5 inset",
+        input: "0px 0px 0px 2px #607B964D",
+      },
       colors: {
         primary: {
           black: "#01080E",
@@ -22,6 +26,8 @@ module.exports = {
         },
         secondary: {
           gray: "#607B96",
+          "dark-gray": "#465E77",
+          "light-gray": "#1C2B3A",
           green: "#3C9D93",
           purple: "#4D5BCE",
           white: "#FFFFFF",
@@ -35,9 +41,6 @@ module.exports = {
         },
         line: {
           gray: "#1E2D3D",
-        },
-        shadow: {
-          game: "1px 5px 11px 0px #02121BB5 inset",
         },
       },
       spacing: {},
