@@ -53,8 +53,6 @@ function useSnake() {
           addToArr = true
 
           break
-        } else {
-          addToArr = false
         }
 
         j++
