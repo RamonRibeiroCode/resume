@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { useState } from "react"
 
@@ -30,9 +29,9 @@ function Header() {
   const router = useRouter()
 
   return (
-    <header className="relative flex justify-between items-center h-14 px-4 border-b border-line-gray z-50 xl:pl-5 xl:pr-0">
+    <header className="relative flex justify-between items-center h-14 px-4 border-b border-line-gray z-50 xl:px-0">
       <div className="flex h-full items-center flex-1">
-        <span className="block text-base text-secondary-gray xl:pr-32">
+        <span className="block text-base text-secondary-gray xl:pl-5 xl:max-w-[272px] xl:w-full">
           ramon-ribeiro
         </span>
 

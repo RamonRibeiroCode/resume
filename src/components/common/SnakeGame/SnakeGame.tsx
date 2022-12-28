@@ -89,19 +89,19 @@ function SnakeGame() {
           <div>
             <div className="flex justify-center mb-1">
               <div className="flex justify-center items-center w-12 h-7 rounded-lg border border-line-gray bg-primary-black">
-                <Icon name="GameArrowUp" width={9} height={7} />
+                <Icon name="ArrowUp" width={9} height={7} />
               </div>
             </div>
 
             <div className="flex">
               <div className="flex justify-center items-center w-12 h-7 rounded-lg border border-line-gray bg-primary-black mr-1">
-                <Icon name="GameArrowLeft" width={7} height={10} />
+                <Icon name="ArrowLeft" width={7} height={10} />
               </div>
               <div className="flex justify-center items-center w-12 h-7 rounded-lg border border-line-gray bg-primary-black mr-1">
-                <Icon name="GameArrowDown" width={9} height={7} />
+                <Icon name="ArrowDown" width={9} height={7} />
               </div>
               <div className="flex justify-center items-center w-12 h-7 rounded-lg border border-line-gray bg-primary-black">
-                <Icon name="GameArrowRight" width={7} height={10} />
+                <Icon name="ArrowRight" width={7} height={10} />
               </div>
             </div>
           </div>
