@@ -199,7 +199,7 @@ function useSnake() {
         // Perform movement changes to each chunk
         let sneak: any[] = dupSneak
 
-        sneak.map((section: any) => {
+        sneak.forEach((section: any) => {
           if (section.direction === "right") {
             section.part.map((x: number, i: number) => {
               let y = x + 1
@@ -210,7 +210,7 @@ function useSnake() {
               }
             })
           } else if (section.direction === "up") {
-            section.part.map((x: number, i: number) => {
+            section.part.forEach((x: number, i: number) => {
               let y = x - 20
               if (y < 0) {
                 return (section.part[i] = y + 400)
@@ -219,7 +219,7 @@ function useSnake() {
               }
             })
           } else if (section.direction === "left") {
-            section.part.map((x: number, i: number) => {
+            section.part.forEach((x: number, i: number) => {
               let y = x - 1
               if (y % 20 === 19) {
                 return (section.part[i] = y + 20)
@@ -228,7 +228,7 @@ function useSnake() {
               }
             })
           } else if (section.direction === "down") {
-            section.part.map((x: number, i: number) => {
+            section.part.forEach((x: number, i: number) => {
               let y = x + 20
               if (y >= 400) {
                 return (section.part[i] = y - 400)
