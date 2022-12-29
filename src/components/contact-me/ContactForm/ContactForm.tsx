@@ -13,7 +13,7 @@ interface ContactFormValues {
 const initialValues: ContactFormValues = { name: "", email: "", message: "" }
 
 function ContactForm() {
-  const [completed, setCompleted] = useState(true)
+  const [completed, setCompleted] = useState(false)
 
   const handleSubmitForm = (values: ContactFormValues) => {
     values
@@ -23,12 +23,12 @@ function ContactForm() {
 
   if (completed) {
     return (
-      <>
+      <div>
         <h2 className="flex justify-center items-center text-2xl text-secondary-white">
           Thank you! <Image className="ml-1" src={Hand} alt="" />
         </h2>
 
-        <p className="mt-3 mb-5 mx-auto max-w-[285px] text-lg text-center text-secondary-gray">
+        <p className="mt-3 mb-5 mx-auto max-w-[285px] xl:max-w-[382px] text-lg text-center text-secondary-gray">
           Your message has been accepted. You will recieve answer really soon!
         </p>
 
@@ -38,13 +38,13 @@ function ContactForm() {
         >
           send-new-message
         </button>
-      </>
+      </div>
     )
   }
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
-      <Form>
+      <Form className="w-full xl:max-w-md">
         <div className="flex flex-col mb-4">
           <label className="text-base text-secondary-gray mb-2" htmlFor="name">
             _name:
@@ -75,7 +75,7 @@ function ContactForm() {
             _message:
           </label>
           <Field
-            className="w-full min-h-[145px] bg-primary-blue-dark border border-line-gray rounded-lg outline-none p-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
+            className="w-full min-h-[145px] max-h-[270px] bg-primary-blue-dark border border-line-gray rounded-lg outline-none p-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
             as="textarea"
             id="message"
             name="message"

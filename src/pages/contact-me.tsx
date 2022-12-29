@@ -4,6 +4,8 @@ import SideBar from "../components/ui/SideBar"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
 import FindMeLink from "../components/contact-me/FindMeLink"
 import ContactForm from "../components/contact-me/ContactForm"
+import Icon from "../components/ui/Icon"
+import ContactCode from "../components/contact-me/ContactCode"
 
 const contactLabels = [
   {
@@ -50,7 +52,11 @@ function ContactMe() {
         <LabelPage title="_contact-me" />
 
         <Accordion>
-          <AccordionItem id="contacts" title="contacts" className="mb-1">
+          <AccordionItem
+            id="contacts"
+            title="contacts"
+            className="mb-1 xl:mb-0"
+          >
             {contactLabels.map((label) => (
               <ContactLabel
                 key={label.title}
@@ -72,8 +78,25 @@ function ContactMe() {
         </Accordion>
       </SideBar>
 
-      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray">
-        <ContactForm />
+      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0">
+        <div className="hidden w-full h-[41px] border-b border-line-gray xl:flex">
+          <div className="flex justify-center items-center border-r border-line-gray pr-3">
+            <span className="ml-3 mr-12 text-base text-secondary-gray">
+              contacts
+            </span>
+
+            <Icon name="MenuClose" width={10} height={10} />
+          </div>
+        </div>
+        <div className="flex h-[calc(100%_-_41px)]">
+          <div className="flex justify-center items-center flex-1">
+            <ContactForm />
+          </div>
+
+          <div className="flex justify-center items-center flex-1 border-l border-line-gray">
+            <ContactCode />
+          </div>
+        </div>
       </div>
     </div>
   )
