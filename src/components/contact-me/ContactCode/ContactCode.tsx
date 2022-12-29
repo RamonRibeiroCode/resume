@@ -2,8 +2,13 @@ import { ReactNode } from "react"
 
 import { useContactForm } from "../../../contexts/ContactForm"
 
+const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "full" })
+
 function ContactCode() {
   const { name, email, message } = useContactForm()
+
+  const currentDate = new Date()
+  const formattedDate = dateFormatter.format(currentDate)
 
   return (
     <div className="flex flex-col">
@@ -42,7 +47,7 @@ function ContactCode() {
 
       <CodeLine number={7} indent={1}>
         <CodeBlue>date</CodeBlue>
-        <CodeGray>:</CodeGray> <CodeOrange>{'"Thu 21 Apr"'}</CodeOrange>
+        <CodeGray>:</CodeGray> <CodeOrange>{`"${formattedDate}"`}</CodeOrange>
         <CodeGray>,</CodeGray>
       </CodeLine>
 
