@@ -14,6 +14,7 @@ function Drawer({ open, setOpen, children }: DrawerProps) {
       <button
         className="xl:hidden"
         onClick={() => setOpen((prevOpen) => !prevOpen)}
+        aria-label="Close Menu"
       >
         {open ? (
           <Icon name="MenuClose" width={16} height={16} />

@@ -14,7 +14,7 @@ const socialMedias = [
 function Footer() {
   return (
     <footer className="flex items-center pl-4 h-12 border-t border-line-gray z-50 xl:pl-5">
-      <span className="text-base text-secondary-gray flex-1 xl:flex-none xl:pr-4">
+      <span className="text-base text-secondary-gray flex-1 xl:flex-none xl:pr-[35px]">
         find me in:
       </span>
 
