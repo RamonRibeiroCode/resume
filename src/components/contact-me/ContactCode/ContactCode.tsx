@@ -106,11 +106,14 @@ function CodeLine({
 }: CodeLineProps) {
   return (
     <div
-      className={`flex  mb-[2px] pr-4   last:mb-0 ${
+      className={`flex mb-[2px] pr-4 last:mb-0 ${
         limit ? "overflow-y-auto max-w-[580px] max-h-[240px] scroll-bar" : ""
       }`}
     >
-      <Line>{number}</Line>
+      <Line>
+        {number < 10 && <span className="opacity-0"> 0</span>}
+        {number}
+      </Line>
 
       <p style={{ marginLeft: indent * 12 }}>{children}</p>
     </div>
