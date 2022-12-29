@@ -1,6 +1,10 @@
 import { ReactNode } from "react"
 
+import { useContactForm } from "../../../contexts/ContactForm"
+
 function ContactCode() {
+  const { name, email, message } = useContactForm()
+
   return (
     <div className="flex flex-col">
       <CodeLine number={1}>
@@ -20,19 +24,19 @@ function ContactCode() {
 
       <CodeLine number={4} indent={1}>
         <CodeBlue>name</CodeBlue>
-        <CodeGray>:</CodeGray> <CodeOrange>{'"Jonathan Davis"'}</CodeOrange>
+        <CodeGray>:</CodeGray> <CodeOrange>{`"${name}"`}</CodeOrange>
         <CodeGray>,</CodeGray>
       </CodeLine>
 
       <CodeLine number={5} indent={1}>
         <CodeBlue>email</CodeBlue>
-        <CodeGray>:</CodeGray> <CodeOrange>{'""'}</CodeOrange>
+        <CodeGray>:</CodeGray> <CodeOrange>{`"${email}"`}</CodeOrange>
         <CodeGray>,</CodeGray>
       </CodeLine>
 
-      <CodeLine number={6} indent={1}>
+      <CodeLine number={6} indent={1} limit>
         <CodeBlue>message</CodeBlue>
-        <CodeGray>:</CodeGray> <CodeOrange>{'""'}</CodeOrange>
+        <CodeGray>:</CodeGray> <CodeOrange>{`"${message}"`}</CodeOrange>
         <CodeGray>,</CodeGray>
       </CodeLine>
 
@@ -81,6 +85,7 @@ interface CodeProps {
 interface CodeLineProps {
   number: number
   indent?: number
+  limit?: boolean
   children?: ReactNode
 }
 
@@ -88,9 +93,18 @@ function Line({ children }: CodeProps) {
   return <span className="text-lg text-secondary-gray mr-10">{children}</span>
 }
 
-function CodeLine({ number, indent = 0, children }: CodeLineProps) {
+function CodeLine({
+  number,
+  indent = 0,
+  limit = false,
+  children,
+}: CodeLineProps) {
   return (
-    <div className="flex items-center mb-[2px] last:mb-0">
+    <div
+      className={`flex  mb-[2px] pr-4   last:mb-0 ${
+        limit ? "overflow-y-auto max-w-[580px] max-h-[240px] scroll-bar" : ""
+      }`}
+    >
       <Line>{number}</Line>
 
       <p style={{ marginLeft: indent * 12 }}>{children}</p>

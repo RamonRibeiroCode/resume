@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 import Image from "next/image"
 import { Formik, Form, Field } from "formik"
 
+import { useContactForm } from "../../../contexts/ContactForm"
 import Hand from "../../../assets/imgs/contact-me/hand.png"
 
 interface ContactFormValues {
@@ -14,6 +15,8 @@ const initialValues: ContactFormValues = { name: "", email: "", message: "" }
 
 function ContactForm() {
   const [completed, setCompleted] = useState(false)
+  const { name, setName, email, setEmail, message, setMessage } =
+    useContactForm()
 
   const handleSubmitForm = (values: ContactFormValues) => {
     values
@@ -53,6 +56,11 @@ function ContactForm() {
             className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
             id="name"
             name="name"
+            max="2"
+            value={name}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
           />
         </div>
 
@@ -64,6 +72,10 @@ function ContactForm() {
             className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
             id="email"
             name="email"
+            value={email}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
           />
         </div>
 
@@ -79,6 +91,10 @@ function ContactForm() {
             as="textarea"
             id="message"
             name="message"
+            value={message}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setMessage(e.target.value)
+            }
           />
         </div>
 
