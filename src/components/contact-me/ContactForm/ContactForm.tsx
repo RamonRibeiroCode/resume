@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useCallback, useState } from "react"
 import Image from "next/image"
 import { Formik, Form, Field } from "formik"
 
@@ -18,11 +18,30 @@ function ContactForm() {
   const { name, setName, email, setEmail, message, setMessage } =
     useContactForm()
 
-  const handleSubmitForm = (values: ContactFormValues) => {
-    values
-
+  const handleSubmitForm = useCallback((values: ContactFormValues) => {
     setCompleted(true)
-  }
+  }, [])
+
+  const handleChangeName = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setName(e.target.value)
+    },
+    [setName]
+  )
+
+  const handleChangeEmail = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setEmail(e.target.value)
+    },
+    [setEmail]
+  )
+
+  const handleChangeMessage = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setMessage(e.target.value)
+    },
+    [setMessage]
+  )
 
   if (completed) {
     return (
@@ -58,9 +77,7 @@ function ContactForm() {
             name="name"
             max="2"
             value={name}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setName(e.target.value)
-            }
+            onChange={handleChangeName}
           />
         </div>
 
@@ -73,9 +90,7 @@ function ContactForm() {
             id="email"
             name="email"
             value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
+            onChange={handleChangeEmail}
           />
         </div>
 
@@ -92,9 +107,7 @@ function ContactForm() {
             id="message"
             name="message"
             value={message}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setMessage(e.target.value)
-            }
+            onChange={handleChangeMessage}
           />
         </div>
 

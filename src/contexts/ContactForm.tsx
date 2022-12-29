@@ -1,7 +1,6 @@
 import {
   createContext,
   useState,
-  useEffect,
   ReactNode,
   useMemo,
   useContext,
@@ -9,7 +8,7 @@ import {
   Dispatch,
 } from "react"
 
-interface ContactFormContext {
+interface ContactFormContextProps {
   name: string
   setName: Dispatch<SetStateAction<string>>
   email: string
@@ -22,7 +21,7 @@ interface ContactFormProviderProps {
   children: ReactNode
 }
 
-const ContactFormContext = createContext({} as ContactFormContext)
+const ContactFormContext = createContext({} as ContactFormContextProps)
 
 export const ContactFormProvider = ({ children }: ContactFormProviderProps) => {
   const [name, setName] = useState("")
