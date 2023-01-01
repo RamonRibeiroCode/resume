@@ -3,7 +3,7 @@ import Icon from "../Icon"
 interface CheckboxProps {
   id: string
   active: boolean
-  onClick: (tag: string) => void
+  onClick: (id: any) => void
 }
 
 function Checkbox({ id, active, onClick }: CheckboxProps) {

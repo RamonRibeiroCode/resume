@@ -1,6 +1,6 @@
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
-import LabelPage from "../components/ui/LabelPage"
-import SideBar from "../components/ui/SideBar"
+import LabelPage from "../components/common/LabelPage"
+import SideBar from "../components/common/SideBar"
 import Checkbox from "../components/ui/Checkbox"
 
 import projectImage1 from "../assets/imgs/projects/project-1.png"
@@ -8,12 +8,14 @@ import projectImage2 from "../assets/imgs/projects/project-2.png"
 import projectImage3 from "../assets/imgs/projects/project-3.png"
 import { useCallback, useState } from "react"
 import Icon from "../components/ui/Icon"
-import { StaticImageData } from "next/image"
+import Image, { StaticImageData } from "next/image"
+import CodeBar from "../components/common/CodeBar"
 
 interface Project {
   name: string
   imageUrl: string | StaticImageData
   description: string
+  href: string
   tags: Tech[]
 }
 
@@ -25,6 +27,7 @@ const projects: Project[] = [
     imageUrl: projectImage1,
     description:
       "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
+    href: "",
     tags: ["Gatsby", "SASS"],
   },
   {
@@ -32,6 +35,7 @@ const projects: Project[] = [
     imageUrl: projectImage2,
     description:
       "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
+    href: "",
     tags: ["React", "NextJs", "Tailwind"],
   },
   {
@@ -39,6 +43,7 @@ const projects: Project[] = [
     imageUrl: projectImage3,
     description:
       "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
+    href: "",
     tags: ["React", "VTEX", "CSS"],
   },
 ]
@@ -71,10 +76,10 @@ const getIconDimensions = (name: Tech) => {
 }
 
 function Projects() {
-  const [tagsApplied, setTagsApplied] = useState<string[]>([])
+  const [tagsApplied, setTagsApplied] = useState<Tech[]>(["Gatsby"])
 
   const handleApplyFilter = useCallback(
-    (tag: string) => {
+    (tag: Tech) => {
       if (tagsApplied.includes(tag)) {
         return setTagsApplied((prevTagsApplied) =>
           prevTagsApplied.filter((prevTag) => prevTag !== tag)
@@ -87,6 +92,20 @@ function Projects() {
   )
 
   const emptyFilters = tagsApplied.length === 0
+
+  const filteredProjects = projects.filter((project) => {
+    const projectTags = project.tags
+
+    let tagMatch = false
+
+    projectTags.forEach((projectTag) => {
+      if (tagsApplied.includes(projectTag)) {
+        tagMatch = true
+      }
+    })
+
+    return tagMatch
+  })
 
   return (
     <div className="flex flex-col flex-1 xl:flex-row">
@@ -112,12 +131,56 @@ function Projects() {
         </Accordion>
       </SideBar>
 
-      <div className="p-4">
-        <div>
-          <span className="text-secondary-white">{"//"} projects</span>{" "}
-          <span className="text-secondary-gray">
-            / {emptyFilters ? "All" : tagsApplied.join("; ")}
+      <div className="flex-1 xl:border-l xl:border-line-gray">
+        <div className="p-4 pb-0 xl:h-[41px] xl:border-b xl:border-line-gray xl:p-0 xl:flex xl:items-center">
+          <span className="text-secondary-white xl:hidden">
+            {"//"} projects
+          </span>{" "}
+          <span className="text-secondary-gray xl:h-full xl:border-r xl:border-line-gray xl:px-3 xl:flex xl:items-center">
+            <span className="xl:hidden"> / </span>
+            {emptyFilters ? "All" : tagsApplied.join("; ")}
+
+            {!emptyFilters && (
+              <button
+                className="hidden ml-12 xl:flex"
+                onClick={() => setTagsApplied([])}
+              >
+                <Icon name="MenuClose" width={10} height={10} />
+              </button>
+            )}
           </span>
+        </div>
+
+        <div className="flex h-[calc(100%_-_41px)]">
+          <ul className="flex-1 grid mt-4 p-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+            {filteredProjects.map((project, index) => (
+              <li className="mb-5" key={project.name}>
+                <div className="mb-4">
+                  <span className="font-bold text-primary-blue-code">
+                    Project {index + 1}
+                  </span>
+                  <span className="text-secondary-gray"> / {project.name}</span>
+                </div>
+
+                <article className="border border-secondary-gray rounded-2xl overflow-hidden">
+                  <a href={project.href}>
+                    <Image className="w-full" src={project.imageUrl} alt="" />
+                    <div className="p-6">
+                      <p className="text-secondary-gray">
+                        {project.description}
+                      </p>
+
+                      <span className="block w-fit text-sm py-[10px] px-[14px] bg-secondary-light-gray rounded-lg mt-6 text-secondary-white hover:bg-accent-orange hover:text-primary-black">
+                        view-project
+                      </span>
+                    </div>
+                  </a>
+                </article>
+              </li>
+            ))}
+          </ul>
+
+          <CodeBar />
         </div>
       </div>
     </div>
