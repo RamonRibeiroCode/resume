@@ -9,7 +9,7 @@ interface CheckboxProps {
 function Checkbox({ id, active, onClick }: CheckboxProps) {
   return (
     <div
-      className={`flex justify-center items-center w-[18px] h-[18px] border border-secondary-gray rounded-sm ${
+      className={`flex justify-center items-center w-[18px] h-[18px] border border-secondary-gray rounded-sm cursor-pointer ${
         active ? "bg-secondary-gray" : ""
       }`}
       onClick={() => onClick(id)}

@@ -8,8 +8,18 @@ import projectImage2 from "../assets/imgs/projects/project-2.png"
 import projectImage3 from "../assets/imgs/projects/project-3.png"
 import { useCallback, useState } from "react"
 import Icon from "../components/ui/Icon"
+import { StaticImageData } from "next/image"
 
-const projects = [
+interface Project {
+  name: string
+  imageUrl: string | StaticImageData
+  description: string
+  tags: Tech[]
+}
+
+type Tech = "Gatsby" | "React" | "CSS" | "SASS" | "NextJs" | "Tailwind" | "VTEX"
+
+const projects: Project[] = [
   {
     name: "VTEX Community Stater",
     imageUrl: projectImage1,
@@ -33,7 +43,7 @@ const projects = [
   },
 ]
 
-const tags = projects.reduce<string[]>((accumulator, currentValue) => {
+const tags = projects.reduce<Tech[]>((accumulator, currentValue) => {
   currentValue.tags.forEach((tag) => {
     if (!accumulator.includes(tag)) {
       accumulator.push(tag)
@@ -43,13 +53,17 @@ const tags = projects.reduce<string[]>((accumulator, currentValue) => {
   return accumulator
 }, [])
 
-const getIconDimensions = (name: string) => {
+const getIconDimensions = (name: Tech) => {
   switch (name) {
     case "Gatsby":
       return { width: 21, height: 20 }
     case "React":
       return { width: 22, height: 20 }
     case "CSS":
+      return { width: 21, height: 18 }
+    case "Tailwind":
+      return { width: 20, height: 12 }
+    case "VTEX":
       return { width: 21, height: 18 }
     default:
       return { width: 20, height: 20 }
