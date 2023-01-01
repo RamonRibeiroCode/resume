@@ -21,7 +21,7 @@ type Tech = "Gatsby" | "React" | "CSS" | "SASS" | "NextJs" | "Tailwind" | "VTEX"
 
 const projects: Project[] = [
   {
-    name: "VTEX Community Stater",
+    name: "VTEX Community Starter",
     imageUrl: projectImage1,
     description:
       "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
@@ -86,6 +86,8 @@ function Projects() {
     [tagsApplied]
   )
 
+  const emptyFilters = tagsApplied.length === 0
+
   return (
     <div className="flex flex-col flex-1 xl:flex-row">
       <SideBar>
@@ -95,7 +97,7 @@ function Projects() {
           <AccordionItem id="projects" title="projects">
             <div className="flex flex-col">
               {tags.map((tag) => (
-                <div key={tag} className="flex items-center mb-4">
+                <div key={tag} className="flex items-center mb-4 last:mb-0">
                   <Checkbox
                     id={tag}
                     active={tagsApplied.includes(tag)}
@@ -110,7 +112,14 @@ function Projects() {
         </Accordion>
       </SideBar>
 
-      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0"></div>
+      <div className="p-4">
+        <div>
+          <span className="text-secondary-white">{"//"} projects</span>{" "}
+          <span className="text-secondary-gray">
+            / {emptyFilters ? "All" : tagsApplied.join("; ")}
+          </span>
+        </div>
+      </div>
     </div>
   )
 }

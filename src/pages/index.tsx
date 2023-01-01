@@ -5,7 +5,7 @@ import blurDesktop from "../assets/imgs/home/blur-desktop.png"
 import dynamic from "next/dynamic"
 
 const SnakeGameWithNoSSR = dynamic(
-  () => import("../components/common/SnakeGame/SnakeGame"),
+  () => import("../components/home/SnakeGame/SnakeGame"),
   { ssr: false }
 )
 
