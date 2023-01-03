@@ -1,4 +1,5 @@
 import Folder from "../components/about-me/Folder"
+import CodeBar from "../components/common/CodeBar"
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import ContactLabel from "../components/contact-me/ContactLabel"
@@ -43,10 +44,34 @@ function AboutMe() {
         </Accordion>
       </SideBar>
 
-      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0">
-        <span className="text-secondary-white">{activeArchive.path}</span>
+      <div className="flex-1 mt-4 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0">
+        <div className="mb-3 xl:mb-0 xl:flex xl:w-full xl:pl-4 xl:h-[41px] xl:border-b xl:border-line-gray">
+          <div className="xl:flex items-center xl:pr-4 xl:h-full xl:border-r xl:border-line-gray">
+            <span className="text-secondary-white">
+              <span className="xl:hidden">
+                {"//"} {activeArchive.folder}{" "}
+              </span>
+              <span className="text-secondary-gray xl:hidden"> / </span>
+              <span className="text-secondary-gray">{activeArchive.name}</span>
+            </span>
+          </div>
+        </div>
 
-        <div>{activeArchive.content}</div>
+        <div className="xl:flex h-[calc(100%_-_41px)]">
+          <div className="flex-1 mb-4">
+            <div className="xl:pt-4 xl:px-9">
+              <p className="text-secondary-gray">{activeArchive.content}</p>
+            </div>
+          </div>
+
+          <div className="flex-1 xl:border-l border-line-gray xl:pt-4 xl:px-9">
+            <span className="text-secondary-white xl:text-secondary-gray">
+              {"//"} Code snippet showcase:
+            </span>
+          </div>
+
+          <CodeBar />
+        </div>
       </div>
     </div>
   )

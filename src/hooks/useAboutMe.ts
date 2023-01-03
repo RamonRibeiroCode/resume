@@ -9,7 +9,7 @@ export interface Folder {
 type FolderColors = "Orange" | "Blue" | "Green"
 
 export interface Archive {
-  path: string
+  folder: string
   name: string
   content: string
 }
@@ -20,9 +20,11 @@ const personalInfoFolders: Folder[] = [
     color: "Orange",
     archives: [
       {
-        path: "bio / me",
+        folder: "bio",
         name: "me",
-        content: "",
+        content: `About me\nI have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.`,
       },
     ],
   },
@@ -31,7 +33,7 @@ const personalInfoFolders: Folder[] = [
     color: "Green",
     archives: [
       {
-        path: "interests / flutter",
+        folder: "interests",
         name: "flutter",
         content: "",
       },
@@ -42,12 +44,12 @@ const personalInfoFolders: Folder[] = [
     color: "Blue",
     archives: [
       {
-        path: "education / high-school",
+        folder: "education",
         name: "high-school",
         content: "",
       },
       {
-        path: "education / university",
+        folder: "education",
         name: "university",
         content: "",
       },

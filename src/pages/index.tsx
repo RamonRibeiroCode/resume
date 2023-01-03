@@ -50,7 +50,7 @@ function Home() {
             draggable={false}
           />
 
-          <div className="hidden ml-20 z-10 p-9 rounded-lg game-backdrop border border-[#0C1616] xl:flex 2xl:ml-32"></div>
+          <div className="hidden w-[522px] ml-20 z-10 p-9 rounded-lg xl:flex 2xl:ml-32"></div>
         </div>
       </div>
 

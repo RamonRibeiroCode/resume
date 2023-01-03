@@ -15,7 +15,7 @@ function AppliedTags({
   setTagsApplied,
 }: AppliedTagsProps) {
   return (
-    <span className="text-secondary-gray xl:h-full xl:border-r xl:border-line-gray xl:px-3 xl:flex xl:items-center">
+    <span className="text-secondary-gray xl:h-full xl:border-r xl:border-line-gray xl:px-4 xl:flex xl:items-center">
       <span className="xl:hidden"> / </span>
       {emptyFilters ? "All" : tagsApplied.join("; ")}
 
