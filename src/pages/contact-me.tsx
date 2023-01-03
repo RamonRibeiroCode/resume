@@ -9,7 +9,7 @@ import ContactCode from "../components/contact-me/ContactCode"
 import { ContactFormProvider } from "../contexts/ContactForm"
 import CodeBar from "../components/common/CodeBar"
 
-const contactLabels = [
+export const contactLabels = [
   {
     title: "ramonribeiro120@gmail.com",
     icon: {

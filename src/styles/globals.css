@@ -18,6 +18,10 @@ body {
   background-color: #e5e9f0;
 }
 
+.checkbox:hover .checkbox-shadow {
+  background-color: #607b964d;
+}
+
 .snake-container {
   text-align: center;
 }

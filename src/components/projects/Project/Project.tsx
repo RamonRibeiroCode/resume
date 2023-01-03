@@ -16,12 +16,15 @@ function Project({
   description,
 }: ProjectProps) {
   return (
-    <li className="mb-5">
+    <li className="mb-5 xl:mb-0">
       <div className="mb-4">
         <span className="font-bold text-primary-blue-code">
           Project {position}
         </span>
-        <span className="text-secondary-gray"> / {name}</span>
+        <span className="text-secondary-gray">
+          {" "}
+          /<span className="hidden lg:inline-block">/</span> {name}
+        </span>
       </div>
 
       <article className="border border-secondary-gray rounded-2xl overflow-hidden">

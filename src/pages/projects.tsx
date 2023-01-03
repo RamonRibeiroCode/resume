@@ -42,7 +42,7 @@ function Projects() {
         </div>
 
         <div className="flex h-[calc(100%_-_41px)]">
-          <ul className="flex-1 grid mt-4 p-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+          <ul className="flex-1 grid mt-4 p-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3 xl:max-w-7xl xl:mx-auto xl:mt-8">
             {filteredProjects.map((project, index) => (
               <Project
                 key={project.name}
