@@ -1,66 +1,31 @@
-import { useState } from "react"
 import Folder from "../components/about-me/Folder"
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import ContactLabel from "../components/contact-me/ContactLabel"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
-import Icon from "../components/ui/Icon"
+import useAboutMe from "../hooks/useAboutMe"
 import { contactLabels } from "./contact-me"
 
-export type FolderColors = "Orange" | "Blue" | "Green"
-
-const personalInfoFolders = [
-  {
-    name: "bio",
-    color: "Orange" as FolderColors,
-    archives: [
-      {
-        name: "me",
-        content: "",
-      },
-    ],
-  },
-  {
-    name: "interests",
-    color: "Green" as FolderColors,
-  },
-  {
-    name: "education",
-    color: "Blue" as FolderColors,
-    archives: [
-      {
-        name: "high-school",
-        content: "",
-      },
-      {
-        name: "university",
-        content: "",
-      },
-    ],
-  },
-]
-
 function AboutMe() {
-  const [activeContent, setActiveContent] = useState("")
+  const { folders, activeArchive, setActiveArchive } = useAboutMe()
 
   return (
     <div className="flex flex-col flex-1 xl:flex-row">
       <SideBar>
         <LabelPage title="_about-me" />
 
-        <Accordion>
+        <Accordion defaultOpened="personal-info">
           <AccordionItem
             id="personal-info"
             title="personal-info"
             className="mb-1 xl:mb-0"
           >
             <Accordion>
-              {personalInfoFolders.map((folder) => (
+              {folders.map((folder) => (
                 <Folder
                   key={folder.name}
-                  name={folder.name}
-                  color={folder.color}
-                  archives={folder.archives}
+                  setActiveArchive={setActiveArchive}
+                  {...folder}
                 />
               ))}
             </Accordion>
@@ -78,7 +43,11 @@ function AboutMe() {
         </Accordion>
       </SideBar>
 
-      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0"></div>
+      <div className="flex-1 mt-9 px-4 xl:border-l xl:border-line-gray xl:mt-0 xl:p-0">
+        <span className="text-secondary-white">{activeArchive.path}</span>
+
+        <div>{activeArchive.content}</div>
+      </div>
     </div>
   )
 }

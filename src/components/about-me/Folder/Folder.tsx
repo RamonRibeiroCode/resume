@@ -1,28 +1,25 @@
+import { Dispatch, SetStateAction } from "react"
 import * as UIAccordion from "@radix-ui/react-accordion"
-import Icon from "../../../components/ui/Icon"
-import { FolderColors } from "../../../pages/about-me"
-import Accordion from "../../ui/Accordion"
+
+import type {
+  Folder as IFolder,
+  Archive as IArchive,
+} from "../../../hooks/useAboutMe"
 import Archive from "../Archive"
+import Icon from "../../../components/ui/Icon"
 
 import styles from "./Folder.module.css"
 
-interface FolderProps {
-  name: string
-  color: FolderColors
-  archives?: FolderArchive[]
+interface FolderProps extends IFolder {
+  setActiveArchive: Dispatch<SetStateAction<IArchive>>
 }
 
-interface FolderArchive {
-  name: string
-  content: string
-}
-
-function Folder({ name, color, archives }: FolderProps) {
+function Folder({ name, color, archives, setActiveArchive }: FolderProps) {
   return (
     <UIAccordion.Item value={`folder-${name}`} className="mb-4 last:mb-0">
       <UIAccordion.Header>
         <UIAccordion.Trigger
-          className={`flex items-center m-0 ${styles["folder-trigger"]}`}
+          className={`flex items-center ${styles["folder-trigger"]}`}
         >
           <Icon
             className={styles["arrow-folder"]}
@@ -48,7 +45,11 @@ function Folder({ name, color, archives }: FolderProps) {
       <UIAccordion.Content className="text-secondary-white">
         <ul className="pl-5 pt-2">
           {archives?.map((archive) => (
-            <Archive key={archive.name} name={archive.name} />
+            <Archive
+              key={archive.name}
+              setActiveArchive={setActiveArchive}
+              {...archive}
+            />
           ))}
         </ul>
       </UIAccordion.Content>
