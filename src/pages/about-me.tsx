@@ -1,4 +1,5 @@
 import Folder from "../components/about-me/Folder"
+import Snippet from "../components/about-me/Snippet"
 import CodeBar from "../components/common/CodeBar"
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
@@ -6,6 +7,23 @@ import ContactLabel from "../components/contact-me/ContactLabel"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
 import useAboutMe from "../hooks/useAboutMe"
 import { contactLabels } from "./contact-me"
+
+const codeSnippets = [
+  {
+    monthsAgo: 5,
+    stars: 3,
+    details:
+      "My work here was 5 months ago. It was for the project called “...”. Some other text can be placed here.",
+    codeId: "1",
+  },
+  {
+    monthsAgo: 9,
+    stars: 0,
+    details:
+      "My work here was 5 months ago. It was for the project called “...”. Some other text can be placed here.",
+    codeId: "1",
+  },
+]
 
 function AboutMe() {
   const { folders, activeArchive, setActiveArchive } = useAboutMe()
@@ -65,9 +83,21 @@ function AboutMe() {
           </div>
 
           <div className="flex-1 xl:border-l border-line-gray xl:pt-4 xl:px-9">
-            <span className="text-secondary-white xl:text-secondary-gray">
+            <span className="text-secondary-white xl:text-secondary-gray xl:text-lg">
               {"//"} Code snippet showcase:
             </span>
+
+            <ul className="mt-7">
+              {codeSnippets.map((snippet) => (
+                <Snippet
+                  key={snippet.codeId}
+                  monthsAgo={snippet.monthsAgo}
+                  stars={snippet.stars}
+                  details={snippet.details}
+                  codeId={snippet.codeId}
+                />
+              ))}
+            </ul>
           </div>
 
           <CodeBar />

@@ -16,7 +16,7 @@ interface FolderProps extends IFolder {
 
 function Folder({ name, color, archives, setActiveArchive }: FolderProps) {
   return (
-    <UIAccordion.Item value={`folder-${name}`} className="mb-4 last:mb-0">
+    <UIAccordion.Item value={`folder-${name}`} className="mb-3 last:mb-0">
       <UIAccordion.Header>
         <UIAccordion.Trigger
           className={`flex items-center ${styles["folder-trigger"]}`}
