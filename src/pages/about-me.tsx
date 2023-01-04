@@ -14,14 +14,30 @@ const codeSnippets = [
     stars: 3,
     details:
       "My work here was 5 months ago. It was for the project called “...”. Some other text can be placed here.",
-    codeId: "1",
+    codeSnippet: `function getRemakeSkus(sellerId, items) {
+    return items.reduce(
+      (initial, item, index, array) =>
+        \`\${initial}sku=\${item.vtexItemId}&qty=\${item.quantity}\${
+          array.length - 1 === index ? \`&seller=\${sellerId}&sc=2\` : \`&seller=\${sellerId}&sc=2&\`
+        }\`,
+      ''
+      )
+    }`,
   },
   {
     monthsAgo: 9,
     stars: 0,
     details:
       "My work here was 5 months ago. It was for the project called “...”. Some other text can be placed here.",
-    codeId: "1",
+    codeSnippet: `function getRemakeSkus(sellerId: string) {
+      return items.reduce(
+        (initial, item, index, array) =>
+          \`\${initial}sku=\${item.vtexItemId}&qty=\${item.quantity}\${
+            array.length - 1 === index ? \`&seller=\${sellerId}&sc=2\` : \`&seller=\${sellerId}&sc=2&\`
+          }\`,
+        ''
+        )
+    }`,
   },
 ]
 
@@ -76,13 +92,13 @@ function AboutMe() {
         </div>
 
         <div className="xl:flex h-[calc(100%_-_41px)]">
-          <div className="flex-1 mb-4">
+          <div className="xl:w-1/2 mb-4">
             <div className="xl:pt-4 xl:px-9">
               <p className="text-secondary-gray">{activeArchive.content}</p>
             </div>
           </div>
 
-          <div className="flex-1 xl:border-l border-line-gray xl:pt-4 xl:px-9">
+          <div className="xl:w-1/2 xl:border-l border-line-gray xl:pt-4 xl:px-9">
             <span className="text-secondary-white xl:text-secondary-gray xl:text-lg">
               {"//"} Code snippet showcase:
             </span>
@@ -90,11 +106,11 @@ function AboutMe() {
             <ul className="mt-7">
               {codeSnippets.map((snippet) => (
                 <Snippet
-                  key={snippet.codeId}
+                  key={snippet.details}
                   monthsAgo={snippet.monthsAgo}
                   stars={snippet.stars}
                   details={snippet.details}
-                  codeId={snippet.codeId}
+                  codeSnippet={snippet.codeSnippet}
                 />
               ))}
             </ul>

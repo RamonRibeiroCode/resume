@@ -1,15 +1,16 @@
 import Image from "next/image"
 import User from "../../../assets/imgs/about-me/ramon.jpeg"
 import Icon from "../../ui/Icon"
+import SintaxHighlight from "../../ui/SintaxHighlight"
 
 interface SnippetProps {
   monthsAgo: number
   stars: number
   details: string
-  codeId: string
+  codeSnippet: string
 }
 
-function Snippet({ stars }: SnippetProps) {
+function Snippet({ monthsAgo, stars, codeSnippet }: SnippetProps) {
   return (
     <li className="mb-12">
       <div className="flex justify-between">
@@ -21,7 +22,9 @@ function Snippet({ stars }: SnippetProps) {
           />
           <div className="ml-3">
             <p className="text-sm text-primary-blue-code">@username</p>
-            <p className="text-xs text-secondary-gray">5 months ago</p>
+            <p className="text-xs text-secondary-gray">
+              {monthsAgo} months ago
+            </p>
           </div>
         </div>
 
@@ -40,6 +43,8 @@ function Snippet({ stars }: SnippetProps) {
           </div>
         </div>
       </div>
+
+      <SintaxHighlight className="mt-3">{codeSnippet}</SintaxHighlight>
     </li>
   )
 }

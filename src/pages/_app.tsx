@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <style jsx global>
         {`
-          html {
+          * {
             font-family: ${firaCode.style.fontFamily};
           }
         `}

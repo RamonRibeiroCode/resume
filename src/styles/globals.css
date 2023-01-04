@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./highlight.css";
+
 body {
   margin: 0;
 }
 
 .scroll-bar::-webkit-scrollbar {
   width: 4px;
+  height: 6px;
 }
 
 .scroll-bar::-webkit-scrollbar-track {
