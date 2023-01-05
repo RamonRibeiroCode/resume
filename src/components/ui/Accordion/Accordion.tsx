@@ -1,5 +1,5 @@
 import * as UIAccordion from "@radix-ui/react-accordion"
-import { ForwardRefExoticComponent, ReactNode, RefAttributes } from "react"
+import { ReactNode } from "react"
 import Icon from "../Icon"
 
 import styles from "./Accordion.module.css"

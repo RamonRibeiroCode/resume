@@ -2,7 +2,6 @@ import Image from "next/image"
 
 import blurMobile from "../assets/imgs/home/blur-mobile.png"
 import blurDesktop from "../assets/imgs/home/blur-desktop.png"
-import dynamic from "next/dynamic"
 
 function Home() {
   return (
