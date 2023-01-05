@@ -55,8 +55,6 @@ function Snippet({
           </div>
         </div>
 
-        <SintaxHighlight className="mt-3">{codeSnippet}</SintaxHighlight>
-
         <Accordion.Content>
           <div className="flex mt-4 pt-4 border-t border-line-gray">
             <p className="text-sm text-secondary-gray mr-4">{details}</p>
