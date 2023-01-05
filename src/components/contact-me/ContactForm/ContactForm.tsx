@@ -1,17 +1,9 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from "react"
 import Image from "next/image"
-import axios from "axios"
 
 import { useContactForm } from "../../../contexts/ContactForm"
 import Hand from "../../../assets/imgs/contact-me/hand.png"
 import Icon from "../../ui/Icon"
 import Spinner from "../../ui/Spinner"
-
-interface ContactFormValues {
-  name: string
-  email: string
-  message: string
-}
 
 function ContactForm() {
   const {
