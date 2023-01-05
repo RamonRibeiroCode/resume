@@ -1,0 +1,7 @@
+.folder-trigger[aria-expanded="true"] .arrow-folder {
+  rotate: 90deg;
+}
+
+.folder-trigger[aria-expanded="true"] .folder-title {
+  color: #ffffff;
+}

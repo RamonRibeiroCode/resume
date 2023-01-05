@@ -1,14 +1,15 @@
 import ContactLabel from "../components/contact-me/ContactLabel"
-import LabelPage from "../components/ui/LabelPage"
-import SideBar from "../components/ui/SideBar"
+import LabelPage from "../components/common/LabelPage"
+import SideBar from "../components/common/SideBar"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
 import FindMeLink from "../components/contact-me/FindMeLink"
 import ContactForm from "../components/contact-me/ContactForm"
 import Icon from "../components/ui/Icon"
 import ContactCode from "../components/contact-me/ContactCode"
 import { ContactFormProvider } from "../contexts/ContactForm"
+import CodeBar from "../components/common/CodeBar"
 
-const contactLabels = [
+export const contactLabels = [
   {
     title: "ramonribeiro120@gmail.com",
     icon: {
@@ -98,6 +99,8 @@ function ContactMe() {
             <div className="hidden xl:flex justify-center items-center border-l border-line-gray p-6 xl:w-3/5 2xl:w-1/2">
               <ContactCode />
             </div>
+
+            <CodeBar />
           </div>
         </div>
       </div>

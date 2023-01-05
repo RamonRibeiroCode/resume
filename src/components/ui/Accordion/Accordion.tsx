@@ -6,11 +6,12 @@ import styles from "./Accordion.module.css"
 
 interface AccordionProps {
   children?: ReactNode
+  defaultOpened?: string
 }
 
-function Accordion({ children }: AccordionProps) {
+function Accordion({ children, defaultOpened }: AccordionProps) {
   return (
-    <UIAccordion.Root type="single" collapsible>
+    <UIAccordion.Root type="single" collapsible defaultValue={defaultOpened}>
       {children}
     </UIAccordion.Root>
   )
@@ -33,7 +34,7 @@ export function AccordionItem({
     <UIAccordion.Item className={className} value={id}>
       <UIAccordion.Header className="bg-line-gray xl:bg-transparent xl:border-b xl:border-line-gray">
         <UIAccordion.Trigger
-          className={`flex items-center w-full my-0 px-4 py-2 ${styles["accordion-trigger"]}`}
+          className={`flex items-center w-full px-4 py-2 ${styles["accordion-trigger"]}`}
         >
           <Icon className="mr-3" name="ArrowRight" width={7} height={10} />
 

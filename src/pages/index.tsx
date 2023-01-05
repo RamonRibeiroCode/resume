@@ -2,12 +2,6 @@ import Image from "next/image"
 
 import blurMobile from "../assets/imgs/home/blur-mobile.png"
 import blurDesktop from "../assets/imgs/home/blur-desktop.png"
-import dynamic from "next/dynamic"
-
-const SnakeGameWithNoSSR = dynamic(
-  () => import("../components/common/SnakeGame/SnakeGame"),
-  { ssr: false }
-)
 
 function Home() {
   return (
@@ -55,9 +49,7 @@ function Home() {
             draggable={false}
           />
 
-          <div className="hidden ml-20 z-10 p-9 rounded-lg game-backdrop border border-[#0C1616] xl:flex 2xl:ml-32">
-            <SnakeGameWithNoSSR />
-          </div>
+          <div className="hidden w-[522px] ml-20 z-10 p-9 rounded-lg xl:flex 2xl:ml-32"></div>
         </div>
       </div>
 
