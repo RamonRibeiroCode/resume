@@ -25,20 +25,24 @@
       {
         "metric": "speed-index",
         "budget": 3500
+      },
+      {
+        "metric": "total.size.resource-summary",
+        "budget": 600000
       }
     ],
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 100
-      },
-      {
-        "resourceType": "total",
         "budget": 400
       },
       {
+        "resourceType": "total",
+        "budget": 1200
+      },
+      {
         "resourceType": "image",
-        "budget": 300
+        "budget": 1600
       }
     ],
     "resourceCounts": [
