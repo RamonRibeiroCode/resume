@@ -1,9 +1,9 @@
 import { StaticImageData } from "next/image"
 import { useState, useCallback } from "react"
 
-import projectImage1 from "../assets/imgs/projects/project-1.png"
-import projectImage2 from "../assets/imgs/projects/project-2.png"
-import projectImage3 from "../assets/imgs/projects/project-3.png"
+import projectImage1 from "../assets/imgs/projects/project-1.jpg"
+import projectImage2 from "../assets/imgs/projects/project-2.jpg"
+import projectImage3 from "../assets/imgs/projects/project-3.jpg"
 
 export interface Project {
   name: string
@@ -27,24 +27,24 @@ const projects: Project[] = [
     name: "VTEX Community Starter",
     imageUrl: projectImage1,
     description:
-      "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
-    href: "",
+      "Project made in a hackathon in 48 hours at a face-to-face event, the website won the competition and is open to developers who want a template to build VTEX stores.",
+    href: "https://www.faststore.dev/starters/beauty",
     tags: ["Gatsby", "SASS"],
   },
   {
     name: "Carrefour Market Store",
     imageUrl: projectImage2,
     description:
-      "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
-    href: "",
+      "Carrefour e-commerce (largest supermarket in Brazil), where different types of food are sold.",
+    href: "https://mercado.carrefour.com.br/",
     tags: ["React", "NextJs", "Tailwind"],
   },
   {
-    name: "Carrefour Shopping Store",
+    name: "Carrefour My Account",
     imageUrl: projectImage3,
     description:
-      "Duis aute irure dolor in velit esse cillum incididunt ut labore.",
-    href: "",
+      '"My account" on the Carrefour website, where customers can view their orders, request changes and cancellations, and be able to repurchase some items, among other options.',
+    href: "https://www.carrefour.com.br/account#/orders",
     tags: ["React", "VTEX", "CSS"],
   },
 ]
