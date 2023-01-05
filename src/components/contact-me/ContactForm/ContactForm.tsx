@@ -1,47 +1,24 @@
-import { ChangeEvent, useCallback, useState } from "react"
 import Image from "next/image"
-import { Formik, Form, Field } from "formik"
 
 import { useContactForm } from "../../../contexts/ContactForm"
 import Hand from "../../../assets/imgs/contact-me/hand.png"
-
-interface ContactFormValues {
-  name: string
-  email: string
-  message: string
-}
-
-const initialValues: ContactFormValues = { name: "", email: "", message: "" }
+import Icon from "../../ui/Icon"
+import Spinner from "../../ui/Spinner"
 
 function ContactForm() {
-  const [completed, setCompleted] = useState(false)
-  const { name, setName, email, setEmail, message, setMessage } =
-    useContactForm()
-
-  const handleSubmitForm = useCallback((values: ContactFormValues) => {
-    setCompleted(true)
-  }, [])
-
-  const handleChangeName = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setName(e.target.value)
-    },
-    [setName]
-  )
-
-  const handleChangeEmail = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setEmail(e.target.value)
-    },
-    [setEmail]
-  )
-
-  const handleChangeMessage = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setMessage(e.target.value)
-    },
-    [setMessage]
-  )
+  const {
+    name,
+    email,
+    message,
+    errors,
+    setCompleted,
+    completed,
+    loading,
+    handleSubmitForm,
+    handleChangeName,
+    handleChangeEmail,
+    handleChangeMessage,
+  } = useContactForm()
 
   if (completed) {
     return (
@@ -64,61 +41,70 @@ function ContactForm() {
     )
   }
 
+  const hasEmptyValues = !name || !email || !message
+
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
-      <Form className="w-full xl:max-w-md">
-        <div className="flex flex-col mb-4">
-          <label className="text-base text-secondary-gray mb-2" htmlFor="name">
-            _name:
-          </label>
-          <Field
-            className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
-            id="name"
-            name="name"
-            max="2"
-            value={name}
-            onChange={handleChangeName}
-          />
-        </div>
+    <form className="w-full xl:max-w-md" onSubmit={handleSubmitForm}>
+      <div className="flex flex-col mb-4">
+        <label className="text-base text-secondary-gray mb-2" htmlFor="name">
+          _name:
+        </label>
+        <input
+          className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
+          id="name"
+          name="name"
+          max="2"
+          value={name}
+          onChange={handleChangeName}
+        />
+      </div>
 
-        <div className="flex flex-col mb-4">
-          <label className="text-base text-secondary-gray mb-2" htmlFor="email">
-            _email:
-          </label>
-          <Field
-            className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
-            id="email"
-            name="email"
-            value={email}
-            onChange={handleChangeEmail}
-          />
-        </div>
+      <div className="flex flex-col mb-4">
+        <label className="text-base text-secondary-gray mb-2" htmlFor="email">
+          _email:
+        </label>
+        <input
+          className="w-full h-10 bg-primary-blue-dark border border-line-gray rounded-lg outline-none px-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleChangeEmail}
+        />
+      </div>
 
-        <div className="flex flex-col">
-          <label
-            className="text-base text-secondary-gray mb-2"
-            htmlFor="message"
-          >
-            _message:
-          </label>
-          <Field
-            className="w-full min-h-[145px] max-h-[270px] bg-primary-blue-dark border border-line-gray rounded-lg outline-none p-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
-            as="textarea"
-            id="message"
-            name="message"
-            value={message}
-            onChange={handleChangeMessage}
-          />
-        </div>
+      <div className="flex flex-col">
+        <label className="text-base text-secondary-gray mb-2" htmlFor="message">
+          _message:
+        </label>
+        <textarea
+          className="w-full min-h-[145px] max-h-[270px] bg-primary-blue-dark border border-line-gray rounded-lg outline-none p-4 text-secondary-dark-gray focus:border-secondary-gray focus:shadow-input"
+          id="message"
+          name="message"
+          value={message}
+          onChange={handleChangeMessage}
+        />
+      </div>
 
-        <button
-          className="py-3 px-5 bg-secondary-light-gray rounded-lg text-sm text-secondary-white"
-          type="submit"
-        >
-          submit-message
-        </button>
-      </Form>
-    </Formik>
+      <button
+        className="w-full max-w-[160px] flex justify-center items-center py-3  mt-6 bg-secondary-light-gray rounded-lg text-sm text-secondary-white disabled:opacity-30"
+        type="submit"
+        disabled={loading || hasEmptyValues}
+      >
+        {loading ? <Spinner /> : "submit-message"}
+      </button>
+
+      {errors && (
+        <ul className="mt-5">
+          {errors.map((error) => (
+            <li key={error} className="flex items-center my-3">
+              <Icon name="Warning" width={18} height={18} />
+
+              <span className="text-sm ml-1 text-accent-orange">{error}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </form>
   )
 }
 
