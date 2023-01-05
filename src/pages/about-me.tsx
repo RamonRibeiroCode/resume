@@ -104,26 +104,7 @@ function AboutMe() {
             </div>
           </div>
 
-          <div className="xl:w-1/2 xl:border-l border-line-gray xl:pt-4 xl:px-9">
-            <span className="text-secondary-white xl:text-secondary-gray xl:text-lg">
-              {"//"} Code snippet showcase:
-            </span>
-
-            <Accordion>
-              <ul className="mt-7">
-                {codeSnippets.map((snippet, index) => (
-                  <Snippet
-                    key={snippet.details}
-                    monthsAgo={snippet.monthsAgo}
-                    stars={snippet.stars}
-                    details={snippet.details}
-                    codeSnippet={snippet.codeSnippet}
-                    index={index}
-                  />
-                ))}
-              </ul>
-            </Accordion>
-          </div>
+          <div className="xl:w-1/2 xl:border-l border-line-gray xl:pt-4 xl:px-9"></div>
 
           <CodeBar />
         </div>
