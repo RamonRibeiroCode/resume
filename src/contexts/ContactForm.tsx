@@ -33,9 +33,9 @@ interface ContactFormProviderProps {
 const ContactFormContext = createContext({} as ContactFormContextProps)
 
 export const ContactFormProvider = ({ children }: ContactFormProviderProps) => {
-  const [name, setName] = useState("Ramon")
-  const [email, setEmail] = useState("ramon_20112011@hotmail.com")
-  const [message, setMessage] = useState("Message test")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
 
   const [completed, setCompleted] = useState(false)
   const [loading, setLoading] = useState(false)
