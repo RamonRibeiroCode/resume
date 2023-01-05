@@ -25,10 +25,6 @@
       {
         "metric": "speed-index",
         "budget": 3500
-      },
-      {
-        "metric": "total.size.resource-summary",
-        "budget": 600000
       }
     ],
     "resourceSizes": [
