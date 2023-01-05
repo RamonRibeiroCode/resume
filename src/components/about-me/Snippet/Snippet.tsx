@@ -2,7 +2,12 @@ import * as Accordion from "@radix-ui/react-accordion"
 import Image from "next/image"
 import User from "../../../assets/imgs/about-me/ramon.jpeg"
 import Icon from "../../ui/Icon"
-import SintaxHighlight from "../../ui/SintaxHighlight"
+
+import dynamic from "next/dynamic"
+
+const SintaxHighlight = dynamic(() => import("../../ui/SintaxHighlight"), {
+  loading: () => null,
+})
 
 interface SnippetProps {
   monthsAgo: number
@@ -54,6 +59,8 @@ function Snippet({
             </div>
           </div>
         </div>
+
+        <SintaxHighlight className="mt-3">{codeSnippet}</SintaxHighlight>
 
         <Accordion.Content>
           <div className="flex mt-4 pt-4 border-t border-line-gray">
