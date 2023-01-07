@@ -2,14 +2,14 @@ import { create } from "@storybook/theming/create"
 // import Logo from '../public/logo.svg'
 
 export default create({
-  base: "light",
+  base: "dark",
 
-  colorPrimary: "#00419e",
-  colorSecondary: "#00419e",
+  colorPrimary: "#FEA55F",
+  colorSecondary: "#FEA55F",
 
   // UI
-  appBg: "#f3f4ff",
-  appContentBg: "white",
+  appBg: "#01080E",
+  appContentBg: "#011627",
   appBorderRadius: 6,
 
   // Typography

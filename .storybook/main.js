@@ -30,6 +30,7 @@ module.exports = {
       },
     },
     "@storybook/addon-a11y",
+    "storybook-css-modules",
   ],
   framework: "@storybook/react",
   core: {
