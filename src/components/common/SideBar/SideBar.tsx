@@ -5,7 +5,7 @@ interface SideBarProps {
 }
 
 function SideBar({ children }: SideBarProps) {
-  return <div className="w-full h-full xl:max-w-[272px]">{children}</div>
+  return <aside className="w-full h-full xl:max-w-[272px]">{children}</aside>
 }
 
 export default SideBar

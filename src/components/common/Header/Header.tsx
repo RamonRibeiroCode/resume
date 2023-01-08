@@ -1,4 +1,4 @@
-import { useRouter } from "next/router"
+import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 
 import Drawer from "./Drawer"
@@ -26,7 +26,7 @@ const headerLinks = [
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <header className="relative flex justify-between items-center h-14 px-4 border-b border-line-gray z-50 xl:px-0">
@@ -41,7 +41,7 @@ function Header() {
               key={link.title}
               title={link.title}
               href={link.href}
-              active={router.pathname === link.href}
+              active={pathname === link.href}
               penultimate={index + 2 === headerLinks.length}
             />
           ))}
@@ -55,7 +55,7 @@ function Header() {
               key={link.title}
               title={link.title}
               href={link.href}
-              active={router.pathname === link.href}
+              active={pathname === link.href}
               setOpen={setMenuOpen}
             />
           ))}

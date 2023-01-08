@@ -1,4 +1,5 @@
 import "../src/styles/globals.css"
+import "./storybook.css"
 
 import { initialize, mswDecorator } from "msw-storybook-addon"
 
