@@ -13,7 +13,8 @@ export default create({
   appBorderRadius: 6,
 
   // Typography
-  fontBase: '"Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif',
+  fontBase:
+    '"Fira Code", -apple-system, system-ui, BlinkMacSystemFont, sans-serif',
 
   brandTitle: `Resume - Ramon`,
 })
