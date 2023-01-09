@@ -3,6 +3,15 @@ import "./storybook.css"
 
 import { initialize, mswDecorator } from "msw-storybook-addon"
 
+import * as NextImage from "next/image"
+
+const OriginalNextImage = NextImage.default
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+})
+
 // Initialize MSW
 initialize()
 
