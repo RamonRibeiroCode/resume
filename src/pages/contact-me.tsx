@@ -9,7 +9,7 @@ import ContactCode from "../components/contact-me/ContactCode"
 import { ContactFormProvider } from "../contexts/ContactForm"
 import CodeBar from "../components/common/CodeBar"
 
-export const contactLabels = [
+export const contactLabels: ContactLabelProps[] = [
   {
     title: "ramonribeiro120@gmail.com",
     icon: {
@@ -46,6 +46,18 @@ const findMeLinks = [
     href: "https://stackoverflow.com/users/20854618/ramon-ribeiro",
   },
 ]
+interface ContactLabelProps {
+  title: string
+  icon: ContactIcon
+}
+
+interface ContactIcon {
+  name: ContactIconName
+  width: number
+  height: number
+}
+
+export type ContactIconName = "Mail" | "Phone"
 
 function ContactMe() {
   return (

@@ -1,3 +1,4 @@
+import { ContactIconName } from "../../../pages/contact-me"
 import Icon from "../../ui/Icon"
 
 interface ContactLabelProps {
@@ -6,7 +7,7 @@ interface ContactLabelProps {
 }
 
 interface ContactIcon {
-  name: string
+  name: ContactIconName
   width: number
   height: number
 }

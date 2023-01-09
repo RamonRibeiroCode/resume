@@ -5,7 +5,7 @@ import Folder from "./Folder"
 import Accordion from "../../ui/Accordion"
 
 export default {
-  title: "AboutMe/Folder",
+  title: "About Me/Folder",
   component: Folder,
   args: {
     name: "interests",

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react"
 import Archive from "./Archive"
 
 export default {
-  title: "AboutMe/Archive",
+  title: "About Me/Archive",
   component: Archive,
   args: {
     folder: "bio",

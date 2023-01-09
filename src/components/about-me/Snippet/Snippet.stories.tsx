@@ -5,7 +5,7 @@ import Snippet from "./Snippet"
 import Accordion from "../../ui/Accordion"
 
 export default {
-  title: "AboutMe/Snippet",
+  title: "About Me/Snippet",
   component: Snippet,
   args: {
     monthsAgo: 13,
