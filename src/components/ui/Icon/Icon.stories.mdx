@@ -1,0 +1,152 @@
+import {
+  Canvas,
+  Meta,
+  Title,
+  IconGallery,
+  IconItem,
+  Description,
+} from "@storybook/addon-docs"
+
+import Icon from "./Icon"
+
+<Meta
+  title="Design System/Icons"
+  parameters={{ options: { showToolbar: false } }}
+/>
+
+---
+
+## Icons
+
+Os ícones ajudam a criar páginas da web ilustrando conceitos e melhorando a navegação do site.
+No entanto, o uso de ícones pode diminuir o desempenho da página.
+Uma opção para evitar a diminuição do desempenho da página é usar SVGs de um
+arquivo SVG único, localizado em `/public/icons.svg` e carregá-los com
+o `components/ui/Icon`. Verifique a documentação do [Gerenciando ícones SVG](https://github.com/vtex-sites/nextjs.store#managing-svg-icons).
+
+<br />
+
+Esses são os sprites que utilizaremos dentro e fora do nosso front-end:
+
+`/public/icons.svg`
+
+Utilizaremos a ferramenta [SVGOMG](https://jakearchibald.github.io/svgomg/) para otimização.
+
+<br />
+
+---
+
+Este projeto usa SVGs de <a ahref="https://remixicon.com/">Remix icons</a>.
+
+---
+
+<br />
+
+#### Contacts
+
+<br />
+
+<IconGallery>
+  <IconItem name="Linkedin">
+    <Icon name="Linkedin" />
+  </IconItem>
+  <IconItem name="Instagram">
+    <Icon name="Instagram" />
+  </IconItem>
+  <IconItem name="Github">
+    <Icon name="Github" />
+  </IconItem>
+  <IconItem name="Mail">
+    <Icon name="Mail" />
+  </IconItem>
+  <IconItem name="Phone">
+    <Icon name="Phone" />
+  </IconItem>
+</IconGallery>
+
+---
+
+#### Actions
+
+<br />
+
+<IconGallery>
+  <IconItem name="MenuHam">
+    <Icon name="MenuHam" />
+  </IconItem>
+  <IconItem name="MenuClose">
+    <Icon name="MenuClose" />
+  </IconItem>
+  <IconItem name="ArrowUp">
+    <Icon name="ArrowUp" />
+  </IconItem>
+  <IconItem name="ArrowLeft">
+    <Icon name="ArrowLeft" />
+  </IconItem>
+  <IconItem name="ArrowDown">
+    <Icon name="ArrowDown" />
+  </IconItem>
+  <IconItem name="ArrowRight">
+    <Icon name="ArrowRight" />
+  </IconItem>
+  <IconItem name="ArrowFolder">
+    <Icon name="ArrowFolder" />
+  </IconItem>
+  <IconItem name="Redirect">
+    <Icon name="Redirect" />
+  </IconItem>
+  <IconItem name="Checked">
+    <Icon name="Checked" />
+  </IconItem>
+  <IconItem name="Star">
+    <Icon name="Star" />
+  </IconItem>
+  <IconItem name="OrangeFolder">
+    <Icon name="OrangeFolder" />
+  </IconItem>
+  <IconItem name="GreenFolder">
+    <Icon name="GreenFolder" />
+  </IconItem>
+  <IconItem name="BlueFolder">
+    <Icon name="BlueFolder" />
+  </IconItem>
+  <IconItem name="Markdown">
+    <Icon name="Markdown" />
+  </IconItem>
+  <IconItem name="Conversation">
+    <Icon name="Conversation" />
+  </IconItem>
+  <IconItem name="Warning">
+    <Icon name="Warning" />
+  </IconItem>
+</IconGallery>
+
+---
+
+#### Techs
+
+<br />
+
+<IconGallery>
+  <IconItem name="Gatsby">
+    <Icon name="Gatsby" />
+  </IconItem>
+  <IconItem name="React">
+    <Icon name="React" />
+  </IconItem>
+  <IconItem name="SASS">
+    <Icon name="SASS" />
+  </IconItem>
+  <IconItem name="CSS">
+    <Icon name="CSS" />
+  </IconItem>
+  <IconItem name="NextJs">
+    <Icon name="NextJs" />
+  </IconItem>
+  <IconItem name="Tailwind">
+    <Icon name="Tailwind" />
+  </IconItem>
+  <IconItem name="VTEX">
+    <Icon name="VTEX" />
+  </IconItem>
+</IconGallery>

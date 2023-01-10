@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react"
-
 import projectImage1 from "../../../assets/imgs/projects/project-1.jpg"
 
 import Project from "./Project"
