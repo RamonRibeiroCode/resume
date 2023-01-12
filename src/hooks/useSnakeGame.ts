@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
   SEGMENT_SIZE,
   randomPositionOnGrid,
@@ -12,6 +12,7 @@ export enum GameState {
   RUNNING,
   GAME_OVER,
   PAUSED,
+  WON,
 }
 
 export interface Position {
@@ -62,12 +63,28 @@ const initialFoodPosition = {
   y: 10,
 }
 
+const initialBodyLenght = initialSnakeBody.length
+
+const fruitsToWin = 10
+
 const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
   const [gameState, setGameState] = useState<GameState>(GameState.PAUSED)
-  const [direction, setDirection] = useState<Direction | undefined>()
+
   const [snakeBody, setSnakeBody] = useState<Position[]>(initialSnakeBody)
   const [foodPosition, setFoodPosition] =
     useState<Position>(initialFoodPosition)
+
+  const [direction, _setDirection] = useState<Direction | undefined>()
+  const directionRef = useRef(direction)
+  const setDirection = (data: Direction | undefined) => {
+    directionRef.current = data
+    _setDirection(data)
+  }
+
+  const { moveDown, moveUp, moveLeft, moveRight } = createSnakeMovement()
+
+  const snakeHeadPosition = snakeBody[snakeBody.length - 1]
+  const score = snakeBody.length - initialBodyLenght
 
   const resetGameState = () => {
     setDirection(undefined)
@@ -76,63 +93,51 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
     setSnakeBody(initialSnakeBody)
   }
 
-  const snakeHeadPosition = snakeBody[snakeBody.length - 1]
-
-  const { moveDown, moveUp, moveLeft, moveRight } = createSnakeMovement()
-
   const startGame = () => {
     document.addEventListener("keydown", onKeyDownHandler)
 
     setGameState(GameState.RUNNING)
   }
 
-  useEffect(() => {
-    const element = document.querySelector("canvas")
-
-    setInterval(() => {
-      element?.click()
-    }, 10)
-  }, [])
-
   const onKeyDownHandler = (event: KeyboardEvent) => {
     switch (event.code) {
       case "KeyS":
-        if (direction !== Direction.UP) {
+        if (directionRef.current !== Direction.UP) {
           setDirection(Direction.DOWN)
         }
         break
       case "ArrowDown":
-        if (direction !== Direction.UP) {
+        if (directionRef.current !== Direction.UP) {
           setDirection(Direction.DOWN)
         }
         break
       case "KeyW":
-        if (direction !== Direction.DOWN) {
+        if (directionRef.current !== Direction.DOWN) {
           setDirection(Direction.UP)
         }
         break
       case "ArrowUp":
-        if (direction !== Direction.DOWN) {
+        if (directionRef.current !== Direction.DOWN) {
           setDirection(Direction.UP)
         }
         break
       case "KeyD":
-        if (direction !== Direction.LEFT) {
+        if (directionRef.current !== Direction.LEFT) {
           setDirection(Direction.RIGHT)
         }
         break
       case "ArrowRight":
-        if (direction !== Direction.LEFT) {
+        if (directionRef.current !== Direction.LEFT) {
           setDirection(Direction.RIGHT)
         }
         break
       case "KeyA":
-        if (direction !== Direction.RIGHT) {
+        if (directionRef.current !== Direction.RIGHT) {
           setDirection(Direction.LEFT)
         }
         break
       case "ArrowLeft":
-        if (direction !== Direction.RIGHT) {
+        if (directionRef.current !== Direction.RIGHT) {
           setDirection(Direction.LEFT)
         }
         break
@@ -142,7 +147,7 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
   const moveSnake = () => {
     let snakeBodyAfterMovement: Position[] | undefined
 
-    switch (direction) {
+    switch (directionRef.current) {
       case Direction.UP:
         if (snakeHeadPosition.y > 0) {
           snakeBodyAfterMovement = moveUp(snakeBody)
@@ -195,8 +200,6 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
         direction,
       })
     ) {
-      console.log("entrou")
-
       setSnakeBody([
         ...snakeBodyAfterMovement!,
         { x: foodPosition.x, y: foodPosition.y },
@@ -213,6 +216,12 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
     }
   }
 
+  useEffect(() => {
+    if (score === fruitsToWin) {
+      setGameState(GameState.WON)
+    }
+  }, [score, snakeBody.length])
+
   useInterval(
     moveSnake,
     gameState === GameState.RUNNING ? MOVEMENT_SPEED : null
@@ -225,6 +234,8 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
     resetGameState,
     startGame,
     gameState,
+    score,
+    fruitsToWin,
   }
 }
 

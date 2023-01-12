@@ -1,9 +1,12 @@
 import { useEffect, useLayoutEffect, useRef } from "react"
 
+const useBrowserLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : () => {}
+
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback)
 
-  useLayoutEffect(() => {
+  useBrowserLayoutEffect(() => {
     savedCallback.current = callback
   }, [callback])
 

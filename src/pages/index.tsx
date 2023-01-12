@@ -50,9 +50,7 @@ function Home() {
             draggable={false}
           />
 
-          <div className="hidden w-[522px] ml-20 z-10 p-9 rounded-lg xl:flex 2xl:ml-32">
-            <SnakeGame />
-          </div>
+          <SnakeGame />
         </div>
       </div>
 

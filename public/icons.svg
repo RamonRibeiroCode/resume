@@ -11,6 +11,8 @@
 <symbol id="MenuHam" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H18V2H0V0ZM0 7H18V9H0V7ZM0 14H18V16H0V14Z" fill="#607B96"/></symbol>
 <symbol id="MenuClose" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 6.2225L14.2225 0L16 1.7775L9.7775 8L16 14.2225L14.2225 16L8 9.7775L1.7775 16L0 14.2225L6.2225 8L0 1.7775L1.7775 0L8 6.2225Z" fill="#607B96"/></symbol>
 
+<symbol id="GameX" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.460938 5.56574L5.99951 0.976349M0.460938 0.976349L5.99951 5.56574" stroke="#114944"/></symbol>
+
 <symbol id="ArrowUp" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.50002 0.309143L8.75003 6.30914H0.25L4.50002 0.309143Z" fill="white"/></symbol>
 <symbol id="ArrowLeft" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.0390623 4.80914L6.03906 0.559128L6.03906 9.05916L0.0390623 4.80914Z" fill="white"/></symbol>
 <symbol id="ArrowDown" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.49998 6.80914L0.24997 0.809142L8.75 0.809143L4.49998 6.80914Z" fill="white"/></symbol>
