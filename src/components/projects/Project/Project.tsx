@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image"
 
 interface ProjectProps {
-  name: string
   position: number
+  name: string
   href: string
   imageUrl: string | StaticImageData
   description: string

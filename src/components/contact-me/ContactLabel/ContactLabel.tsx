@@ -1,18 +1,16 @@
-import { ContactIconName } from "../../../pages/contact-me"
+import { Icon as IconType } from "../../../__generated__/graphql"
 import Icon from "../../ui/Icon"
 
 interface ContactLabelProps {
   title: string
-  icon: ContactIcon
-}
-
-interface ContactIcon {
-  name: ContactIconName
-  width: number
-  height: number
+  icon: IconType
 }
 
 function ContactLabel({ title, icon }: ContactLabelProps) {
+  if (!icon) {
+    return null
+  }
+
   return (
     <div className="flex items-center mb-3 last:mb-0">
       <Icon name={icon.name} width={icon.width} height={icon.height} />

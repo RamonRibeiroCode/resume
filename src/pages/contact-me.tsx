@@ -1,3 +1,6 @@
+import { GetStaticProps } from "next"
+import { gql } from "@apollo/client"
+
 import ContactLabel from "../components/contact-me/ContactLabel"
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
@@ -9,57 +12,15 @@ import ContactCode from "../components/contact-me/ContactCode"
 import { ContactFormProvider } from "../contexts/ContactForm"
 import CodeBar from "../components/common/CodeBar"
 
-export const contactLabels: ContactLabelProps[] = [
-  {
-    title: "ramonribeiro120@gmail.com",
-    icon: {
-      name: "Mail",
-      width: 17,
-      height: 15,
-    },
-  },
-  {
-    title: "(+55) 22992663750",
-    icon: {
-      name: "Phone",
-      width: 17,
-      height: 17,
-    },
-  },
-]
+import { client } from "../lib/apollo"
+import { Contact, FindMeLink as FindMeLinkType } from "../__generated__/graphql"
 
-const findMeLinks = [
-  {
-    title: "YouTube channel",
-    href: "https://www.youtube.com/channel/UCfcqOKe3MFgkzcTKUBtePwg",
-  },
-  {
-    title: "Instagram profile",
-    href: "https://www.instagram.com/ramon_ribeiro15",
-  },
-  {
-    title: "Twitch account",
-    href: "https://www.twitch.tv/ramonesin",
-  },
-  {
-    title: "Stack Overflow",
-    href: "https://stackoverflow.com/users/20854618/ramon-ribeiro",
-  },
-]
-interface ContactLabelProps {
-  title: string
-  icon: ContactIcon
+interface ContactMeProps {
+  contacts: Contact[]
+  findMeLinks: FindMeLinkType[]
 }
 
-interface ContactIcon {
-  name: ContactIconName
-  width: number
-  height: number
-}
-
-export type ContactIconName = "Mail" | "Phone"
-
-function ContactMe() {
+function ContactMe({ contacts, findMeLinks }: ContactMeProps) {
   return (
     <ContactFormProvider>
       <div className="flex flex-col flex-1 xl:flex-row">
@@ -72,11 +33,11 @@ function ContactMe() {
               title="contacts"
               className="mb-1 xl:mb-0"
             >
-              {contactLabels.map((label) => (
+              {contacts.map((contact) => (
                 <ContactLabel
-                  key={label.title}
-                  title={label.title}
-                  icon={label.icon}
+                  key={contact.title}
+                  title={contact.title}
+                  icon={contact.icon}
                 />
               ))}
             </AccordionItem>
@@ -118,6 +79,42 @@ function ContactMe() {
       </div>
     </ContactFormProvider>
   )
+}
+
+const GET_CONTACT_ME = gql`
+  query GetContactMe {
+    contacts {
+      title
+      icon {
+        name
+        width
+        height
+      }
+    }
+
+    findMeLinks {
+      title
+      href
+    }
+  }
+`
+
+interface PageQuery {
+  contacts: Contact[]
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await client.query<PageQuery>({
+    query: GET_CONTACT_ME,
+  })
+
+  const queries = response.data
+
+  return {
+    props: {
+      ...queries,
+    },
+  }
 }
 
 export default ContactMe

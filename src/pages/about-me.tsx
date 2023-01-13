@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client"
+import { GetStaticProps } from "next"
 import Folder from "../components/about-me/Folder"
 import Snippet from "../components/about-me/Snippet"
 import CodeBar from "../components/common/CodeBar"
@@ -6,7 +8,8 @@ import SideBar from "../components/common/SideBar"
 import ContactLabel from "../components/contact-me/ContactLabel"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
 import useAboutMe from "../hooks/useAboutMe"
-import { contactLabels } from "./contact-me"
+import { client } from "../lib/apollo"
+import { Contact } from "../__generated__/graphql"
 
 const codeSnippets = [
   {
@@ -47,7 +50,11 @@ const codeSnippets = [
   },
 ]
 
-function AboutMe() {
+interface AboutMeProps {
+  contacts: Contact[]
+}
+
+function AboutMe({ contacts }: AboutMeProps) {
   const { folders, activeArchive, setActiveArchive } = useAboutMe()
 
   return (
@@ -73,11 +80,11 @@ function AboutMe() {
           </AccordionItem>
 
           <AccordionItem id="contacts" title="contacts">
-            {contactLabels.map((label) => (
+            {contacts.map((contact) => (
               <ContactLabel
-                key={label.title}
-                title={label.title}
-                icon={label.icon}
+                key={contact.title}
+                title={contact.title}
+                icon={contact.icon}
               />
             ))}
           </AccordionItem>
@@ -130,6 +137,37 @@ function AboutMe() {
       </div>
     </div>
   )
+}
+
+const GET_CONTACT_ME = gql`
+  query GetAboutMe {
+    contacts {
+      title
+      icon {
+        name
+        width
+        height
+      }
+    }
+  }
+`
+
+interface PageQuery {
+  contacts: Contact[]
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await client.query<PageQuery>({
+    query: GET_CONTACT_ME,
+  })
+
+  const queries = response.data
+
+  return {
+    props: {
+      ...queries,
+    },
+  }
 }
 
 export default AboutMe
