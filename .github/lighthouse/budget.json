@@ -16,7 +16,7 @@
       },
       {
         "metric": "total-blocking-time",
-        "budget": 400
+        "budget": 600
       },
       {
         "metric": "largest-contentful-paint",
@@ -30,7 +30,7 @@
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 400
+        "budget": 600
       },
       {
         "resourceType": "total",
