@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
+
 import {
   SEGMENT_SIZE,
   randomPositionOnGrid,
@@ -30,8 +31,8 @@ export enum Direction {
 const MOVEMENT_SPEED = 150
 
 interface UseGameLogicProps {
-  canvasWidth?: number
-  canvasHeight?: number
+  canvasWidth: number
+  canvasHeight: number
   canvasRef: React.RefObject<HTMLCanvasElement>
 }
 
@@ -200,16 +201,18 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
         direction,
       })
     ) {
-      setSnakeBody([
-        ...snakeBodyAfterMovement!,
-        { x: foodPosition.x, y: foodPosition.y },
-      ])
+      if (snakeBodyAfterMovement) {
+        setSnakeBody([
+          ...snakeBodyAfterMovement,
+          { x: foodPosition.x, y: foodPosition.y },
+        ])
+      }
 
       setFoodPosition({
         x: randomPositionOnGrid({
-          threshold: canvasWidth!,
+          threshold: canvasWidth,
         }),
-        y: randomPositionOnGrid({ threshold: canvasHeight! }),
+        y: randomPositionOnGrid({ threshold: canvasHeight }),
       })
     } else if (snakeBodyAfterMovement) {
       setSnakeBody(snakeBodyAfterMovement)

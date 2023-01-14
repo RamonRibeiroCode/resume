@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { useArgs } from "@storybook/client-api"
+import { SetStateAction } from "react"
 
 import AppliedTags from "./AppliedTags"
 import { Tech } from "../../../hooks/useProjects"
-import { SetStateAction } from "react"
 
 export default {
   title: "Projects/AppliedTags",

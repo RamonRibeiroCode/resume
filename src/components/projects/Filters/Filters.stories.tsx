@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { useArgs } from "@storybook/client-api"
 
 import useProjects, { Tech } from "../../../hooks/useProjects"
-
 import Filters from "./Filters"
 
 export default {

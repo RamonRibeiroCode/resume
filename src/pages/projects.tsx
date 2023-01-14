@@ -7,7 +7,6 @@ import CodeBar from "../components/common/CodeBar"
 import Project from "../components/projects/Project"
 import AppliedTags from "../components/projects/AppliedTags"
 import Filters from "../components/projects/Filters"
-
 import { Project as ProjectType } from "../__generated__/graphql"
 import useProjects from "../hooks/useProjects"
 import { client } from "../lib/apollo"

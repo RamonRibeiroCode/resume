@@ -8,7 +8,6 @@ import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import ContactLabel from "../components/contact-me/ContactLabel"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
-
 import useAboutMe from "../hooks/useAboutMe"
 import { client } from "../lib/apollo"
 import { CodeSnippet, Contact } from "../__generated__/graphql"

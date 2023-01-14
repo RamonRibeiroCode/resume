@@ -6,8 +6,7 @@ import type {
   Archive as IArchive,
 } from "../../../hooks/useAboutMe"
 import Archive from "../Archive"
-import Icon from "../../../components/ui/Icon"
-
+import Icon from "../../ui/Icon"
 import styles from "./Folder.module.css"
 
 interface FolderProps extends IFolder {

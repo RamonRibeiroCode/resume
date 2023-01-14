@@ -6,4 +6,5 @@ coverage/
 .cache/
 .next/
 @generated
+src/__generated__
 src/typings/

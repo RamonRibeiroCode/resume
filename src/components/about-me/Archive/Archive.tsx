@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
-import type { Archive as IArchive } from "../../../hooks/useAboutMe"
 
+import type { Archive as IArchive } from "../../../hooks/useAboutMe"
 import Icon from "../../ui/Icon"
 
 interface ArchiveProps extends IArchive {

@@ -1,4 +1,4 @@
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { useState } from "react"
 
 import Drawer from "./Drawer"

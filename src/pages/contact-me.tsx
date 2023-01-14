@@ -10,7 +10,6 @@ import ContactForm from "../components/contact-me/ContactForm"
 import Icon from "../components/ui/Icon"
 import ContactCode from "../components/contact-me/ContactCode"
 import CodeBar from "../components/common/CodeBar"
-
 import { ContactFormProvider } from "../contexts/ContactForm"
 import { client } from "../lib/apollo"
 import { Contact, FindMeLink as FindMeLinkType } from "../__generated__/graphql"

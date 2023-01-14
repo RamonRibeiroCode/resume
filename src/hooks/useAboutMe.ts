@@ -57,7 +57,8 @@ const personalInfoFolders: Folder[] = [
   },
 ]
 
-const initialArchive = personalInfoFolders[0].archives[0]
+const [initialFolder] = personalInfoFolders
+const [initialArchive] = initialFolder.archives
 
 function useAboutMe() {
   const [activeArchive, setActiveArchive] = useState<Archive>(initialArchive)

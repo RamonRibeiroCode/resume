@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef } from "react"
 
 import Canvas from "../Canvas"
-
 import { draw } from "../../../helpers/home/snakeGame"
 import useSnakeGame, { GameState } from "../../../hooks/useSnakeGame"
 import Icon from "../../ui/Icon"

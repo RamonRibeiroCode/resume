@@ -40,7 +40,7 @@ function Canvas(
   return (
     <canvas
       className="bg-[#011627] rounded-lg"
-      ref={canvasRef as any}
+      ref={canvasRef as React.RefObject<HTMLCanvasElement>}
       {...props}
     />
   )

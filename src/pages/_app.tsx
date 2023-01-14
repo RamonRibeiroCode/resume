@@ -4,8 +4,9 @@ import { Fira_Code } from "@next/font/google"
 import { ApolloProvider } from "@apollo/client"
 
 import Layout from "../components/common/Layout"
-import "../styles/globals.css"
 import { client } from "../lib/apollo"
+
+import "../styles/globals.css"
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -14,7 +15,7 @@ const firaCode = Fira_Code({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <style jsx global>
+      <style>
         {`
           *,
           code,

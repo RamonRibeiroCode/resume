@@ -1,8 +1,8 @@
 import Image from "next/image"
 
+import SnakeGame from "../components/home/SnakeGame"
 import blurMobile from "../assets/imgs/home/blur-mobile.png"
 import blurDesktop from "../assets/imgs/home/blur-desktop.png"
-import SnakeGame from "../components/home/SnakeGame"
 
 function Home() {
   return (

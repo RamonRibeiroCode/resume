@@ -1,7 +1,7 @@
 import * as UIAccordion from "@radix-ui/react-accordion"
 import { ReactNode } from "react"
-import Icon from "../Icon"
 
+import Icon from "../Icon"
 import styles from "./Accordion.module.css"
 
 interface AccordionProps {
