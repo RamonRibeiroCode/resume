@@ -1,19 +1,17 @@
 import { Dispatch, SetStateAction } from "react"
 import * as UIAccordion from "@radix-ui/react-accordion"
 
-import type {
-  Folder as IFolder,
-  Archive as IArchive,
-} from "../../../hooks/useAboutMe"
+import type { AboutMeContent } from "../../../hooks/useAboutMe"
 import Archive from "../Archive"
 import Icon from "../../ui/Icon"
+import { Folder as FolderType } from "../../../__generated__/graphql"
 import styles from "./Folder.module.css"
 
-interface FolderProps extends IFolder {
-  setActiveArchive: Dispatch<SetStateAction<IArchive>>
+interface FolderProps extends FolderType {
+  setActiveContent: Dispatch<SetStateAction<AboutMeContent>>
 }
 
-function Folder({ name, color, archives, setActiveArchive }: FolderProps) {
+function Folder({ name, color, archives, setActiveContent }: FolderProps) {
   return (
     <UIAccordion.Item value={`folder-${name}`} className="mb-3 last:mb-0">
       <UIAccordion.Header>
@@ -43,10 +41,11 @@ function Folder({ name, color, archives, setActiveArchive }: FolderProps) {
 
       <UIAccordion.Content className="text-secondary-white">
         <ul className="pl-5 pt-2">
-          {archives?.map((archive) => (
+          {archives.map((archive) => (
             <Archive
               key={archive.name}
-              setActiveArchive={setActiveArchive}
+              setActiveContent={setActiveContent}
+              folderName={name}
               {...archive}
             />
           ))}

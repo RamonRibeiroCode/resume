@@ -31,6 +31,482 @@ export type Aggregate = {
   count: Scalars['Int'];
 };
 
+export type Archive = Node & {
+  __typename?: 'Archive';
+  content: Scalars['String'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Archive>;
+  /** List of Archive versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type ArchiveCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ArchiveDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type ArchiveHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type ArchivePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ArchiveScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ArchiveUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type ArchiveConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ArchiveWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ArchiveConnection = {
+  __typename?: 'ArchiveConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ArchiveEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ArchiveCreateInput = {
+  clcwep0w81mf501uj4esu3694?: InputMaybe<FolderCreateManyInlineInput>;
+  content: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ArchiveCreateManyInlineInput = {
+  /** Connect multiple existing Archive documents */
+  connect?: InputMaybe<Array<ArchiveWhereUniqueInput>>;
+  /** Create and connect multiple existing Archive documents */
+  create?: InputMaybe<Array<ArchiveCreateInput>>;
+};
+
+export type ArchiveCreateOneInlineInput = {
+  /** Connect one existing Archive document */
+  connect?: InputMaybe<ArchiveWhereUniqueInput>;
+  /** Create and connect one Archive document */
+  create?: InputMaybe<ArchiveCreateInput>;
+};
+
+/** An edge in a connection. */
+export type ArchiveEdge = {
+  __typename?: 'ArchiveEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Archive;
+};
+
+/** Identifies documents */
+export type ArchiveManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  content_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ArchiveWhereStageInput>;
+  documentInStages_none?: InputMaybe<ArchiveWhereStageInput>;
+  documentInStages_some?: InputMaybe<ArchiveWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum ArchiveOrderByInput {
+  ContentAsc = 'content_ASC',
+  ContentDesc = 'content_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type ArchiveUpdateInput = {
+  clcwep0w81mf501uj4esu3694?: InputMaybe<FolderUpdateManyInlineInput>;
+  content?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type ArchiveUpdateManyInlineInput = {
+  /** Connect multiple existing Archive documents */
+  connect?: InputMaybe<Array<ArchiveConnectInput>>;
+  /** Create and connect multiple Archive documents */
+  create?: InputMaybe<Array<ArchiveCreateInput>>;
+  /** Delete multiple Archive documents */
+  delete?: InputMaybe<Array<ArchiveWhereUniqueInput>>;
+  /** Disconnect multiple Archive documents */
+  disconnect?: InputMaybe<Array<ArchiveWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Archive documents */
+  set?: InputMaybe<Array<ArchiveWhereUniqueInput>>;
+  /** Update multiple Archive documents */
+  update?: InputMaybe<Array<ArchiveUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Archive documents */
+  upsert?: InputMaybe<Array<ArchiveUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ArchiveUpdateManyInput = {
+  content?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type ArchiveUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ArchiveUpdateManyInput;
+  /** Document search */
+  where: ArchiveWhereInput;
+};
+
+export type ArchiveUpdateOneInlineInput = {
+  /** Connect existing Archive document */
+  connect?: InputMaybe<ArchiveWhereUniqueInput>;
+  /** Create and connect one Archive document */
+  create?: InputMaybe<ArchiveCreateInput>;
+  /** Delete currently connected Archive document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Archive document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Archive document */
+  update?: InputMaybe<ArchiveUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Archive document */
+  upsert?: InputMaybe<ArchiveUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ArchiveUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ArchiveUpdateInput;
+  /** Unique document search */
+  where: ArchiveWhereUniqueInput;
+};
+
+export type ArchiveUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ArchiveCreateInput;
+  /** Update document if it exists */
+  update: ArchiveUpdateInput;
+};
+
+export type ArchiveUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ArchiveUpsertInput;
+  /** Unique document search */
+  where: ArchiveWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ArchiveWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type ArchiveWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ArchiveWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  content_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ArchiveWhereStageInput>;
+  documentInStages_none?: InputMaybe<ArchiveWhereStageInput>;
+  documentInStages_some?: InputMaybe<ArchiveWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ArchiveWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ArchiveWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ArchiveWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ArchiveWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ArchiveWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Archive record uniquely */
+export type ArchiveWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
@@ -2267,6 +2743,484 @@ export type FindMeLinkWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+export type Folder = Node & {
+  __typename?: 'Folder';
+  archives: Array<Archive>;
+  color: FolderColor;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Folder>;
+  /** List of Folder versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type FolderArchivesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ArchiveOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ArchiveWhereInput>;
+};
+
+
+export type FolderCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type FolderDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type FolderHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type FolderPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type FolderScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type FolderUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export enum FolderColor {
+  Blue = 'Blue',
+  Green = 'Green',
+  Orange = 'Orange'
+}
+
+export type FolderConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: FolderWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type FolderConnection = {
+  __typename?: 'FolderConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<FolderEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type FolderCreateInput = {
+  archives?: InputMaybe<ArchiveCreateManyInlineInput>;
+  color: FolderColor;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type FolderCreateManyInlineInput = {
+  /** Connect multiple existing Folder documents */
+  connect?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Create and connect multiple existing Folder documents */
+  create?: InputMaybe<Array<FolderCreateInput>>;
+};
+
+export type FolderCreateOneInlineInput = {
+  /** Connect one existing Folder document */
+  connect?: InputMaybe<FolderWhereUniqueInput>;
+  /** Create and connect one Folder document */
+  create?: InputMaybe<FolderCreateInput>;
+};
+
+/** An edge in a connection. */
+export type FolderEdge = {
+  __typename?: 'FolderEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Folder;
+};
+
+/** Identifies documents */
+export type FolderManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  archives_every?: InputMaybe<ArchiveWhereInput>;
+  archives_none?: InputMaybe<ArchiveWhereInput>;
+  archives_some?: InputMaybe<ArchiveWhereInput>;
+  color?: InputMaybe<FolderColor>;
+  /** All values that are contained in given list. */
+  color_in?: InputMaybe<Array<InputMaybe<FolderColor>>>;
+  /** All values that are not equal to given value. */
+  color_not?: InputMaybe<FolderColor>;
+  /** All values that are not contained in given list. */
+  color_not_in?: InputMaybe<Array<InputMaybe<FolderColor>>>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_none?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_some?: InputMaybe<FolderWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum FolderOrderByInput {
+  ColorAsc = 'color_ASC',
+  ColorDesc = 'color_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type FolderUpdateInput = {
+  archives?: InputMaybe<ArchiveUpdateManyInlineInput>;
+  color?: InputMaybe<FolderColor>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type FolderUpdateManyInlineInput = {
+  /** Connect multiple existing Folder documents */
+  connect?: InputMaybe<Array<FolderConnectInput>>;
+  /** Create and connect multiple Folder documents */
+  create?: InputMaybe<Array<FolderCreateInput>>;
+  /** Delete multiple Folder documents */
+  delete?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Disconnect multiple Folder documents */
+  disconnect?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Folder documents */
+  set?: InputMaybe<Array<FolderWhereUniqueInput>>;
+  /** Update multiple Folder documents */
+  update?: InputMaybe<Array<FolderUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Folder documents */
+  upsert?: InputMaybe<Array<FolderUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type FolderUpdateManyInput = {
+  color?: InputMaybe<FolderColor>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type FolderUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FolderUpdateManyInput;
+  /** Document search */
+  where: FolderWhereInput;
+};
+
+export type FolderUpdateOneInlineInput = {
+  /** Connect existing Folder document */
+  connect?: InputMaybe<FolderWhereUniqueInput>;
+  /** Create and connect one Folder document */
+  create?: InputMaybe<FolderCreateInput>;
+  /** Delete currently connected Folder document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Folder document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Folder document */
+  update?: InputMaybe<FolderUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Folder document */
+  upsert?: InputMaybe<FolderUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FolderUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FolderUpdateInput;
+  /** Unique document search */
+  where: FolderWhereUniqueInput;
+};
+
+export type FolderUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FolderCreateInput;
+  /** Update document if it exists */
+  update: FolderUpdateInput;
+};
+
+export type FolderUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FolderUpsertInput;
+  /** Unique document search */
+  where: FolderWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type FolderWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type FolderWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  archives_every?: InputMaybe<ArchiveWhereInput>;
+  archives_none?: InputMaybe<ArchiveWhereInput>;
+  archives_some?: InputMaybe<ArchiveWhereInput>;
+  color?: InputMaybe<FolderColor>;
+  /** All values that are contained in given list. */
+  color_in?: InputMaybe<Array<InputMaybe<FolderColor>>>;
+  /** All values that are not equal to given value. */
+  color_not?: InputMaybe<FolderColor>;
+  /** All values that are not contained in given list. */
+  color_not_in?: InputMaybe<Array<InputMaybe<FolderColor>>>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_none?: InputMaybe<FolderWhereStageInput>;
+  documentInStages_some?: InputMaybe<FolderWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type FolderWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FolderWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<FolderWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Folder record uniquely */
+export type FolderWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type Icon = {
   __typename?: 'Icon';
   height: Scalars['Int'];
@@ -2698,6 +3652,8 @@ export type LocationInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  /** Create one archive */
+  createArchive?: Maybe<Archive>;
   /**
    * Create one asset
    * @deprecated Asset mutations will be overhauled soon
@@ -2709,10 +3665,14 @@ export type Mutation = {
   createContact?: Maybe<Contact>;
   /** Create one findMeLink */
   createFindMeLink?: Maybe<FindMeLink>;
+  /** Create one folder */
+  createFolder?: Maybe<Folder>;
   /** Create one project */
   createProject?: Maybe<Project>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Delete one archive from _all_ existing stages. Returns deleted document. */
+  deleteArchive?: Maybe<Archive>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
   /** Delete one codeSnippet from _all_ existing stages. Returns deleted document. */
@@ -2721,6 +3681,15 @@ export type Mutation = {
   deleteContact?: Maybe<Contact>;
   /** Delete one findMeLink from _all_ existing stages. Returns deleted document. */
   deleteFindMeLink?: Maybe<FindMeLink>;
+  /** Delete one folder from _all_ existing stages. Returns deleted document. */
+  deleteFolder?: Maybe<Folder>;
+  /**
+   * Delete many Archive documents
+   * @deprecated Please use the new paginated many mutation (deleteManyArchivesConnection)
+   */
+  deleteManyArchives: BatchPayload;
+  /** Delete many Archive documents, return deleted documents */
+  deleteManyArchivesConnection: ArchiveConnection;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -2750,6 +3719,13 @@ export type Mutation = {
   /** Delete many FindMeLink documents, return deleted documents */
   deleteManyFindMeLinksConnection: FindMeLinkConnection;
   /**
+   * Delete many Folder documents
+   * @deprecated Please use the new paginated many mutation (deleteManyFoldersConnection)
+   */
+  deleteManyFolders: BatchPayload;
+  /** Delete many Folder documents, return deleted documents */
+  deleteManyFoldersConnection: FolderConnection;
+  /**
    * Delete many Project documents
    * @deprecated Please use the new paginated many mutation (deleteManyProjectsConnection)
    */
@@ -2762,6 +3738,8 @@ export type Mutation = {
   deleteScheduledOperation?: Maybe<ScheduledOperation>;
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
   deleteScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Publish one archive */
+  publishArchive?: Maybe<Archive>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
   /** Publish one codeSnippet */
@@ -2770,6 +3748,15 @@ export type Mutation = {
   publishContact?: Maybe<Contact>;
   /** Publish one findMeLink */
   publishFindMeLink?: Maybe<FindMeLink>;
+  /** Publish one folder */
+  publishFolder?: Maybe<Folder>;
+  /**
+   * Publish many Archive documents
+   * @deprecated Please use the new paginated many mutation (publishManyArchivesConnection)
+   */
+  publishManyArchives: BatchPayload;
+  /** Publish many Archive documents */
+  publishManyArchivesConnection: ArchiveConnection;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -2799,6 +3786,13 @@ export type Mutation = {
   /** Publish many FindMeLink documents */
   publishManyFindMeLinksConnection: FindMeLinkConnection;
   /**
+   * Publish many Folder documents
+   * @deprecated Please use the new paginated many mutation (publishManyFoldersConnection)
+   */
+  publishManyFolders: BatchPayload;
+  /** Publish many Folder documents */
+  publishManyFoldersConnection: FolderConnection;
+  /**
    * Publish many Project documents
    * @deprecated Please use the new paginated many mutation (publishManyProjectsConnection)
    */
@@ -2807,6 +3801,8 @@ export type Mutation = {
   publishManyProjectsConnection: ProjectConnection;
   /** Publish one project */
   publishProject?: Maybe<Project>;
+  /** Schedule to publish one archive */
+  schedulePublishArchive?: Maybe<Archive>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one codeSnippet */
@@ -2815,8 +3811,12 @@ export type Mutation = {
   schedulePublishContact?: Maybe<Contact>;
   /** Schedule to publish one findMeLink */
   schedulePublishFindMeLink?: Maybe<FindMeLink>;
+  /** Schedule to publish one folder */
+  schedulePublishFolder?: Maybe<Folder>;
   /** Schedule to publish one project */
   schedulePublishProject?: Maybe<Project>;
+  /** Unpublish one archive from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishArchive?: Maybe<Archive>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one codeSnippet from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2825,8 +3825,12 @@ export type Mutation = {
   scheduleUnpublishContact?: Maybe<Contact>;
   /** Unpublish one findMeLink from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishFindMeLink?: Maybe<FindMeLink>;
+  /** Unpublish one folder from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishFolder?: Maybe<Folder>;
   /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishProject?: Maybe<Project>;
+  /** Unpublish one archive from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishArchive?: Maybe<Archive>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one codeSnippet from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2835,6 +3839,15 @@ export type Mutation = {
   unpublishContact?: Maybe<Contact>;
   /** Unpublish one findMeLink from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishFindMeLink?: Maybe<FindMeLink>;
+  /** Unpublish one folder from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishFolder?: Maybe<Folder>;
+  /**
+   * Unpublish many Archive documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyArchivesConnection)
+   */
+  unpublishManyArchives: BatchPayload;
+  /** Find many Archive documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyArchivesConnection: ArchiveConnection;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -2864,6 +3877,13 @@ export type Mutation = {
   /** Find many FindMeLink documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyFindMeLinksConnection: FindMeLinkConnection;
   /**
+   * Unpublish many Folder documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyFoldersConnection)
+   */
+  unpublishManyFolders: BatchPayload;
+  /** Find many Folder documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyFoldersConnection: FolderConnection;
+  /**
    * Unpublish many Project documents
    * @deprecated Please use the new paginated many mutation (unpublishManyProjectsConnection)
    */
@@ -2872,6 +3892,8 @@ export type Mutation = {
   unpublishManyProjectsConnection: ProjectConnection;
   /** Unpublish one project from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishProject?: Maybe<Project>;
+  /** Update one archive */
+  updateArchive?: Maybe<Archive>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
   /** Update one codeSnippet */
@@ -2880,6 +3902,15 @@ export type Mutation = {
   updateContact?: Maybe<Contact>;
   /** Update one findMeLink */
   updateFindMeLink?: Maybe<FindMeLink>;
+  /** Update one folder */
+  updateFolder?: Maybe<Folder>;
+  /**
+   * Update many archives
+   * @deprecated Please use the new paginated many mutation (updateManyArchivesConnection)
+   */
+  updateManyArchives: BatchPayload;
+  /** Update many Archive documents */
+  updateManyArchivesConnection: ArchiveConnection;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -2909,6 +3940,13 @@ export type Mutation = {
   /** Update many FindMeLink documents */
   updateManyFindMeLinksConnection: FindMeLinkConnection;
   /**
+   * Update many folders
+   * @deprecated Please use the new paginated many mutation (updateManyFoldersConnection)
+   */
+  updateManyFolders: BatchPayload;
+  /** Update many Folder documents */
+  updateManyFoldersConnection: FolderConnection;
+  /**
    * Update many projects
    * @deprecated Please use the new paginated many mutation (updateManyProjectsConnection)
    */
@@ -2919,6 +3957,8 @@ export type Mutation = {
   updateProject?: Maybe<Project>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
+  /** Upsert one archive */
+  upsertArchive?: Maybe<Archive>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
   /** Upsert one codeSnippet */
@@ -2927,8 +3967,15 @@ export type Mutation = {
   upsertContact?: Maybe<Contact>;
   /** Upsert one findMeLink */
   upsertFindMeLink?: Maybe<FindMeLink>;
+  /** Upsert one folder */
+  upsertFolder?: Maybe<Folder>;
   /** Upsert one project */
   upsertProject?: Maybe<Project>;
+};
+
+
+export type MutationCreateArchiveArgs = {
+  data: ArchiveCreateInput;
 };
 
 
@@ -2952,6 +3999,11 @@ export type MutationCreateFindMeLinkArgs = {
 };
 
 
+export type MutationCreateFolderArgs = {
+  data: FolderCreateInput;
+};
+
+
 export type MutationCreateProjectArgs = {
   data: ProjectCreateInput;
 };
@@ -2959,6 +4011,11 @@ export type MutationCreateProjectArgs = {
 
 export type MutationCreateScheduledReleaseArgs = {
   data: ScheduledReleaseCreateInput;
+};
+
+
+export type MutationDeleteArchiveArgs = {
+  where: ArchiveWhereUniqueInput;
 };
 
 
@@ -2979,6 +4036,26 @@ export type MutationDeleteContactArgs = {
 
 export type MutationDeleteFindMeLinkArgs = {
   where: FindMeLinkWhereUniqueInput;
+};
+
+
+export type MutationDeleteFolderArgs = {
+  where: FolderWhereUniqueInput;
+};
+
+
+export type MutationDeleteManyArchivesArgs = {
+  where?: InputMaybe<ArchiveManyWhereInput>;
+};
+
+
+export type MutationDeleteManyArchivesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
 };
 
 
@@ -3042,6 +4119,21 @@ export type MutationDeleteManyFindMeLinksConnectionArgs = {
 };
 
 
+export type MutationDeleteManyFoldersArgs = {
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationDeleteManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationDeleteManyProjectsArgs = {
   where?: InputMaybe<ProjectManyWhereInput>;
 };
@@ -3072,6 +4164,12 @@ export type MutationDeleteScheduledReleaseArgs = {
 };
 
 
+export type MutationPublishArchiveArgs = {
+  to?: Array<Stage>;
+  where: ArchiveWhereUniqueInput;
+};
+
+
 export type MutationPublishAssetArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3096,6 +4194,30 @@ export type MutationPublishContactArgs = {
 export type MutationPublishFindMeLinkArgs = {
   to?: Array<Stage>;
   where: FindMeLinkWhereUniqueInput;
+};
+
+
+export type MutationPublishFolderArgs = {
+  to?: Array<Stage>;
+  where: FolderWhereUniqueInput;
+};
+
+
+export type MutationPublishManyArchivesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
+};
+
+
+export type MutationPublishManyArchivesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
 };
 
 
@@ -3177,6 +4299,24 @@ export type MutationPublishManyFindMeLinksConnectionArgs = {
 };
 
 
+export type MutationPublishManyFoldersArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationPublishManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationPublishManyProjectsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<ProjectManyWhereInput>;
@@ -3198,6 +4338,14 @@ export type MutationPublishManyProjectsConnectionArgs = {
 export type MutationPublishProjectArgs = {
   to?: Array<Stage>;
   where: ProjectWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishArchiveArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: ArchiveWhereUniqueInput;
 };
 
 
@@ -3236,11 +4384,27 @@ export type MutationSchedulePublishFindMeLinkArgs = {
 };
 
 
+export type MutationSchedulePublishFolderArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: FolderWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishProjectArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: ProjectWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishArchiveArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: ArchiveWhereUniqueInput;
 };
 
 
@@ -3278,11 +4442,25 @@ export type MutationScheduleUnpublishFindMeLinkArgs = {
 };
 
 
+export type MutationScheduleUnpublishFolderArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: FolderWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishProjectArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: ProjectWhereUniqueInput;
+};
+
+
+export type MutationUnpublishArchiveArgs = {
+  from?: Array<Stage>;
+  where: ArchiveWhereUniqueInput;
 };
 
 
@@ -3309,6 +4487,30 @@ export type MutationUnpublishContactArgs = {
 export type MutationUnpublishFindMeLinkArgs = {
   from?: Array<Stage>;
   where: FindMeLinkWhereUniqueInput;
+};
+
+
+export type MutationUnpublishFolderArgs = {
+  from?: Array<Stage>;
+  where: FolderWhereUniqueInput;
+};
+
+
+export type MutationUnpublishManyArchivesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyArchivesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
 };
 
 
@@ -3388,6 +4590,24 @@ export type MutationUnpublishManyFindMeLinksConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyFoldersArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyProjectsArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<ProjectManyWhereInput>;
@@ -3412,6 +4632,12 @@ export type MutationUnpublishProjectArgs = {
 };
 
 
+export type MutationUpdateArchiveArgs = {
+  data: ArchiveUpdateInput;
+  where: ArchiveWhereUniqueInput;
+};
+
+
 export type MutationUpdateAssetArgs = {
   data: AssetUpdateInput;
   where: AssetWhereUniqueInput;
@@ -3433,6 +4659,29 @@ export type MutationUpdateContactArgs = {
 export type MutationUpdateFindMeLinkArgs = {
   data: FindMeLinkUpdateInput;
   where: FindMeLinkWhereUniqueInput;
+};
+
+
+export type MutationUpdateFolderArgs = {
+  data: FolderUpdateInput;
+  where: FolderWhereUniqueInput;
+};
+
+
+export type MutationUpdateManyArchivesArgs = {
+  data: ArchiveUpdateManyInput;
+  where?: InputMaybe<ArchiveManyWhereInput>;
+};
+
+
+export type MutationUpdateManyArchivesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: ArchiveUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ArchiveManyWhereInput>;
 };
 
 
@@ -3504,6 +4753,23 @@ export type MutationUpdateManyFindMeLinksConnectionArgs = {
 };
 
 
+export type MutationUpdateManyFoldersArgs = {
+  data: FolderUpdateManyInput;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
+export type MutationUpdateManyFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: FolderUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FolderManyWhereInput>;
+};
+
+
 export type MutationUpdateManyProjectsArgs = {
   data: ProjectUpdateManyInput;
   where?: InputMaybe<ProjectManyWhereInput>;
@@ -3533,6 +4799,12 @@ export type MutationUpdateScheduledReleaseArgs = {
 };
 
 
+export type MutationUpsertArchiveArgs = {
+  upsert: ArchiveUpsertInput;
+  where: ArchiveWhereUniqueInput;
+};
+
+
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
@@ -3554,6 +4826,12 @@ export type MutationUpsertContactArgs = {
 export type MutationUpsertFindMeLinkArgs = {
   upsert: FindMeLinkUpsertInput;
   where: FindMeLinkWhereUniqueInput;
+};
+
+
+export type MutationUpsertFolderArgs = {
+  upsert: FolderUpsertInput;
+  where: FolderWhereUniqueInput;
 };
 
 
@@ -4159,6 +5437,14 @@ export type PublishLocaleInput = {
 
 export type Query = {
   __typename?: 'Query';
+  /** Retrieve a single archive */
+  archive?: Maybe<Archive>;
+  /** Retrieve document version */
+  archiveVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple archives */
+  archives: Array<Archive>;
+  /** Retrieve multiple archives using the Relay connection interface */
+  archivesConnection: ArchiveConnection;
   /** Retrieve a single asset */
   asset?: Maybe<Asset>;
   /** Retrieve document version */
@@ -4191,6 +5477,14 @@ export type Query = {
   findMeLinks: Array<FindMeLink>;
   /** Retrieve multiple findMeLinks using the Relay connection interface */
   findMeLinksConnection: FindMeLinkConnection;
+  /** Retrieve a single folder */
+  folder?: Maybe<Folder>;
+  /** Retrieve document version */
+  folderVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple folders */
+  folders: Array<Folder>;
+  /** Retrieve multiple folders using the Relay connection interface */
+  foldersConnection: FolderConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single project */
@@ -4219,6 +5513,44 @@ export type Query = {
   users: Array<User>;
   /** Retrieve multiple users using the Relay connection interface */
   usersConnection: UserConnection;
+};
+
+
+export type QueryArchiveArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: ArchiveWhereUniqueInput;
+};
+
+
+export type QueryArchiveVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryArchivesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ArchiveOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ArchiveWhereInput>;
+};
+
+
+export type QueryArchivesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ArchiveOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ArchiveWhereInput>;
 };
 
 
@@ -4371,6 +5703,44 @@ export type QueryFindMeLinksConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<FindMeLinkWhereInput>;
+};
+
+
+export type QueryFolderArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: FolderWhereUniqueInput;
+};
+
+
+export type QueryFolderVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryFoldersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FolderOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FolderWhereInput>;
+};
+
+
+export type QueryFoldersConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FolderOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FolderWhereInput>;
 };
 
 
@@ -4629,7 +5999,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | CodeSnippet | Contact | FindMeLink | Project;
+export type ScheduledOperationAffectedDocument = Archive | Asset | CodeSnippet | Contact | FindMeLink | Folder | Project;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */

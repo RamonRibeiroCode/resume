@@ -1,19 +1,21 @@
 import { Dispatch, SetStateAction } from "react"
 
-import type { Archive as IArchive } from "../../../hooks/useAboutMe"
+import type { AboutMeContent } from "../../../hooks/useAboutMe"
+import { Archive as ArchiveType } from "../../../__generated__/graphql"
 import Icon from "../../ui/Icon"
 
-interface ArchiveProps extends IArchive {
+interface ArchiveProps extends ArchiveType {
   name: string
-  setActiveArchive: Dispatch<SetStateAction<IArchive>>
+  setActiveContent: Dispatch<SetStateAction<AboutMeContent>>
+  folderName: string
 }
 
-function Archive({ setActiveArchive, ...archive }: ArchiveProps) {
+function Archive({ setActiveContent, folderName, ...archive }: ArchiveProps) {
   return (
     <li className="mb-2 last:mb-0">
       <button
         className="flex items-center"
-        onClick={() => setActiveArchive(archive)}
+        onClick={() => setActiveContent({ folderName: folderName, ...archive })}
       >
         <Icon name="Markdown" width={17} height={15} />
 

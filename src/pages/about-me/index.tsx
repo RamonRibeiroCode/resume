@@ -1,24 +1,31 @@
 import { GetStaticProps } from "next"
+import Markdown from "react-markdown"
 import { gql } from "@apollo/client"
 
-import Folder from "../components/about-me/Folder"
-import Snippet from "../components/about-me/Snippet"
-import CodeBar from "../components/common/CodeBar"
-import LabelPage from "../components/common/LabelPage"
-import SideBar from "../components/common/SideBar"
-import ContactLabel from "../components/contact-me/ContactLabel"
-import Accordion, { AccordionItem } from "../components/ui/Accordion"
-import useAboutMe from "../hooks/useAboutMe"
-import { client } from "../lib/apollo"
-import { CodeSnippet, Contact } from "../__generated__/graphql"
+import Folder from "../../components/about-me/Folder"
+import Snippet from "../../components/about-me/Snippet"
+import CodeBar from "../../components/common/CodeBar"
+import LabelPage from "../../components/common/LabelPage"
+import SideBar from "../../components/common/SideBar"
+import ContactLabel from "../../components/contact-me/ContactLabel"
+import Accordion, { AccordionItem } from "../../components/ui/Accordion"
+import useAboutMe from "../../hooks/useAboutMe"
+import { client } from "../../lib/apollo"
+import {
+  CodeSnippet,
+  Contact,
+  Folder as FolderType,
+} from "../../__generated__/graphql"
+import styles from "./styles.module.css"
 
 interface AboutMeProps {
   contacts: Contact[]
   codeSnippets: CodeSnippet[]
+  folders: FolderType[]
 }
 
-function AboutMe({ contacts, codeSnippets }: AboutMeProps) {
-  const { folders, activeArchive, setActiveArchive } = useAboutMe()
+function AboutMe({ contacts, codeSnippets, folders }: AboutMeProps) {
+  const { activeContent, setActiveContent } = useAboutMe(folders)
 
   return (
     <div className="flex flex-col flex-1 xl:flex-row">
@@ -35,7 +42,7 @@ function AboutMe({ contacts, codeSnippets }: AboutMeProps) {
               {folders.map((folder) => (
                 <Folder
                   key={folder.name}
-                  setActiveArchive={setActiveArchive}
+                  setActiveContent={setActiveContent}
                   {...folder}
                 />
               ))}
@@ -59,10 +66,10 @@ function AboutMe({ contacts, codeSnippets }: AboutMeProps) {
           <div className="xl:flex items-center xl:pr-4 xl:h-full xl:border-r xl:border-line-gray">
             <span className="text-secondary-white">
               <span className="xl:hidden">
-                {"//"} {activeArchive.folder}{" "}
+                {"//"} {activeContent.folderName}{" "}
               </span>
               <span className="text-secondary-gray xl:hidden"> / </span>
-              <span className="text-secondary-gray">{activeArchive.name}</span>
+              <span className="text-secondary-gray">{activeContent.name}</span>
             </span>
           </div>
         </div>
@@ -70,7 +77,9 @@ function AboutMe({ contacts, codeSnippets }: AboutMeProps) {
         <div className="xl:flex h-[calc(100%_-_41px)]">
           <div className="xl:w-1/2 mb-4">
             <div className="xl:pt-4 xl:px-9">
-              <p className="text-secondary-gray">{activeArchive.content}</p>
+              <Markdown className={`text-secondary-gray ${styles["about-me"]}`}>
+                {activeContent.content}
+              </Markdown>
             </div>
           </div>
 
@@ -118,6 +127,15 @@ const GET_CONTACT_ME = gql`
       stars
       details
       codeSnippet
+    }
+
+    folders {
+      name
+      color
+      archives {
+        name
+        content
+      }
     }
   }
 `

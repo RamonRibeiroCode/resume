@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import { Fira_Code } from "@next/font/google"
@@ -10,12 +12,13 @@ import "../styles/globals.css"
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
+  variable: "--fira-font",
 })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <style>
+      <style jsx global>
         {`
           *,
           code,
