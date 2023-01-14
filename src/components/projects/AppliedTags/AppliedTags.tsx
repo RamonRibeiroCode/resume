@@ -1,12 +1,12 @@
 import { SetStateAction } from "react"
 
+import { ProjectTag } from "../../../__generated__/graphql"
 import Icon from "../../ui/Icon"
-import { Tech } from "../../../hooks/useProjects"
 
 interface AppliedTagsProps {
   emptyFilters: boolean
-  tagsApplied: Tech[]
-  setTagsApplied: (value: SetStateAction<Tech[]>) => void
+  tagsApplied: ProjectTag[]
+  setTagsApplied: (value: SetStateAction<ProjectTag[]>) => void
 }
 
 function AppliedTags({

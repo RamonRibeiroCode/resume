@@ -3,7 +3,7 @@ import { useArgs } from "@storybook/client-api"
 import { SetStateAction } from "react"
 
 import AppliedTags from "./AppliedTags"
-import { Tech } from "../../../hooks/useProjects"
+import { ProjectTag } from "../../../__generated__/graphql"
 
 export default {
   title: "Projects/AppliedTags",
@@ -17,7 +17,7 @@ export default {
 const Template: ComponentStory<typeof AppliedTags> = ({ ...args }) => {
   const [{ tagsApplied }, updateArgs] = useArgs()
 
-  const handleSetTagsApplied = (newValue: Tech[]) => {
+  const handleSetTagsApplied = (newValue: ProjectTag[]) => {
     updateArgs({ tagsApplied: newValue, emptyFilters: true })
   }
 
@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof AppliedTags> = ({ ...args }) => {
       {...args}
       tagsApplied={tagsApplied}
       setTagsApplied={
-        handleSetTagsApplied as (value: SetStateAction<Tech[]>) => void
+        handleSetTagsApplied as (value: SetStateAction<ProjectTag[]>) => void
       }
     />
   )

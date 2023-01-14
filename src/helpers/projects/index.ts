@@ -1,6 +1,6 @@
-import { Tech } from "../../hooks/useProjects"
+import { ProjectTag } from "../../__generated__/graphql"
 
-export const getIconDimensions = (name: Tech) => {
+export const getIconDimensions = (name: ProjectTag) => {
   switch (name) {
     case "Gatsby":
       return { width: 21, height: 20 }

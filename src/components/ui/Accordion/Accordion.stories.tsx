@@ -2,8 +2,27 @@ import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 
 import Accordion, { AccordionItem } from "./Accordion"
-import { contactLabels } from "../../../pages/contact-me"
 import ContactLabel from "../../contact-me/ContactLabel"
+import { Contact } from "../../../__generated__/graphql"
+
+const contacts = [
+  {
+    title: "ramonribeiro120@gmail.com",
+    icon: {
+      name: "Mail",
+      width: 17,
+      height: 15,
+    },
+  },
+  {
+    title: "(+55) 22992663750",
+    icon: {
+      name: "Phone",
+      width: 17,
+      height: 17,
+    },
+  },
+] as unknown as Contact[]
 
 export default {
   title: "UI/Accordion",
@@ -18,7 +37,7 @@ const Template: ComponentStory<typeof AccordionItem> = ({ ...args }) => {
   return (
     <Accordion>
       <AccordionItem {...args}>
-        {contactLabels.map((label) => (
+        {contacts.map((label) => (
           <ContactLabel
             key={label.title}
             title={label.title}
