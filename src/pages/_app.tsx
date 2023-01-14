@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import { Fira_Code } from "@next/font/google"
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
+import { ApolloProvider } from "@apollo/client"
 
 import Layout from "../components/common/Layout"
 import "../styles/globals.css"

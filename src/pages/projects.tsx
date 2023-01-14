@@ -1,14 +1,15 @@
+import { GetStaticProps } from "next"
+import { gql } from "@apollo/client"
+
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import CodeBar from "../components/common/CodeBar"
-
-import useProjects from "../hooks/useProjects"
 import Project from "../components/projects/Project"
 import AppliedTags from "../components/projects/AppliedTags"
 import Filters from "../components/projects/Filters"
+
 import { Project as ProjectType } from "../__generated__/graphql"
-import { gql } from "@apollo/client"
-import { GetStaticProps } from "next"
+import useProjects from "../hooks/useProjects"
 import { client } from "../lib/apollo"
 
 interface ProjectsProps {

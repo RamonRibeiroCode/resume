@@ -717,6 +717,552 @@ export type BatchPayload = {
   count: Scalars['Long'];
 };
 
+export type CodeSnippet = Node & {
+  __typename?: 'CodeSnippet';
+  codeSnippet: Scalars['String'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  details: Scalars['String'];
+  /** Get the document in other stages */
+  documentInStages: Array<CodeSnippet>;
+  /** List of CodeSnippet versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  monthsAgo: Scalars['Int'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  stars: Scalars['Int'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type CodeSnippetCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CodeSnippetDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type CodeSnippetHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type CodeSnippetPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type CodeSnippetScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type CodeSnippetUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type CodeSnippetConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CodeSnippetWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type CodeSnippetConnection = {
+  __typename?: 'CodeSnippetConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<CodeSnippetEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type CodeSnippetCreateInput = {
+  codeSnippet: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  details: Scalars['String'];
+  monthsAgo: Scalars['Int'];
+  stars: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type CodeSnippetCreateManyInlineInput = {
+  /** Connect multiple existing CodeSnippet documents */
+  connect?: InputMaybe<Array<CodeSnippetWhereUniqueInput>>;
+  /** Create and connect multiple existing CodeSnippet documents */
+  create?: InputMaybe<Array<CodeSnippetCreateInput>>;
+};
+
+export type CodeSnippetCreateOneInlineInput = {
+  /** Connect one existing CodeSnippet document */
+  connect?: InputMaybe<CodeSnippetWhereUniqueInput>;
+  /** Create and connect one CodeSnippet document */
+  create?: InputMaybe<CodeSnippetCreateInput>;
+};
+
+/** An edge in a connection. */
+export type CodeSnippetEdge = {
+  __typename?: 'CodeSnippetEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: CodeSnippet;
+};
+
+/** Identifies documents */
+export type CodeSnippetManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  codeSnippet?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  codeSnippet_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  codeSnippet_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  codeSnippet_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  codeSnippet_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  codeSnippet_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  codeSnippet_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  codeSnippet_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  codeSnippet_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  codeSnippet_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  details?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  details_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  details_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  details_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  details_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  details_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  details_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  details_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  details_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  details_starts_with?: InputMaybe<Scalars['String']>;
+  documentInStages_every?: InputMaybe<CodeSnippetWhereStageInput>;
+  documentInStages_none?: InputMaybe<CodeSnippetWhereStageInput>;
+  documentInStages_some?: InputMaybe<CodeSnippetWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  monthsAgo?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  monthsAgo_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  monthsAgo_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  monthsAgo_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  monthsAgo_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  monthsAgo_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  monthsAgo_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  monthsAgo_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  stars?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  stars_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  stars_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  stars_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  stars_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  stars_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  stars_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  stars_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum CodeSnippetOrderByInput {
+  CodeSnippetAsc = 'codeSnippet_ASC',
+  CodeSnippetDesc = 'codeSnippet_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DetailsAsc = 'details_ASC',
+  DetailsDesc = 'details_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  MonthsAgoAsc = 'monthsAgo_ASC',
+  MonthsAgoDesc = 'monthsAgo_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  StarsAsc = 'stars_ASC',
+  StarsDesc = 'stars_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type CodeSnippetUpdateInput = {
+  codeSnippet?: InputMaybe<Scalars['String']>;
+  details?: InputMaybe<Scalars['String']>;
+  monthsAgo?: InputMaybe<Scalars['Int']>;
+  stars?: InputMaybe<Scalars['Int']>;
+};
+
+export type CodeSnippetUpdateManyInlineInput = {
+  /** Connect multiple existing CodeSnippet documents */
+  connect?: InputMaybe<Array<CodeSnippetConnectInput>>;
+  /** Create and connect multiple CodeSnippet documents */
+  create?: InputMaybe<Array<CodeSnippetCreateInput>>;
+  /** Delete multiple CodeSnippet documents */
+  delete?: InputMaybe<Array<CodeSnippetWhereUniqueInput>>;
+  /** Disconnect multiple CodeSnippet documents */
+  disconnect?: InputMaybe<Array<CodeSnippetWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing CodeSnippet documents */
+  set?: InputMaybe<Array<CodeSnippetWhereUniqueInput>>;
+  /** Update multiple CodeSnippet documents */
+  update?: InputMaybe<Array<CodeSnippetUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple CodeSnippet documents */
+  upsert?: InputMaybe<Array<CodeSnippetUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CodeSnippetUpdateManyInput = {
+  codeSnippet?: InputMaybe<Scalars['String']>;
+  details?: InputMaybe<Scalars['String']>;
+  monthsAgo?: InputMaybe<Scalars['Int']>;
+  stars?: InputMaybe<Scalars['Int']>;
+};
+
+export type CodeSnippetUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: CodeSnippetUpdateManyInput;
+  /** Document search */
+  where: CodeSnippetWhereInput;
+};
+
+export type CodeSnippetUpdateOneInlineInput = {
+  /** Connect existing CodeSnippet document */
+  connect?: InputMaybe<CodeSnippetWhereUniqueInput>;
+  /** Create and connect one CodeSnippet document */
+  create?: InputMaybe<CodeSnippetCreateInput>;
+  /** Delete currently connected CodeSnippet document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected CodeSnippet document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single CodeSnippet document */
+  update?: InputMaybe<CodeSnippetUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single CodeSnippet document */
+  upsert?: InputMaybe<CodeSnippetUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CodeSnippetUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: CodeSnippetUpdateInput;
+  /** Unique document search */
+  where: CodeSnippetWhereUniqueInput;
+};
+
+export type CodeSnippetUpsertInput = {
+  /** Create document if it didn't exist */
+  create: CodeSnippetCreateInput;
+  /** Update document if it exists */
+  update: CodeSnippetUpdateInput;
+};
+
+export type CodeSnippetUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: CodeSnippetUpsertInput;
+  /** Unique document search */
+  where: CodeSnippetWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type CodeSnippetWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type CodeSnippetWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CodeSnippetWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  codeSnippet?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  codeSnippet_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  codeSnippet_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  codeSnippet_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  codeSnippet_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  codeSnippet_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  codeSnippet_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  codeSnippet_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  codeSnippet_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  codeSnippet_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  details?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  details_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  details_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  details_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  details_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  details_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  details_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  details_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  details_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  details_starts_with?: InputMaybe<Scalars['String']>;
+  documentInStages_every?: InputMaybe<CodeSnippetWhereStageInput>;
+  documentInStages_none?: InputMaybe<CodeSnippetWhereStageInput>;
+  documentInStages_some?: InputMaybe<CodeSnippetWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  monthsAgo?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  monthsAgo_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  monthsAgo_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  monthsAgo_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  monthsAgo_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  monthsAgo_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  monthsAgo_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  monthsAgo_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  stars?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  stars_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  stars_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  stars_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** All values less than the given value. */
+  stars_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  stars_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  stars_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  stars_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type CodeSnippetWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<CodeSnippetWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<CodeSnippetWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<CodeSnippetWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<CodeSnippetWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References CodeSnippet record uniquely */
+export type CodeSnippetWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Representing a color value comprising of HEX, RGBA and css color values */
 export type Color = {
   __typename?: 'Color';
@@ -2157,6 +2703,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one codeSnippet */
+  createCodeSnippet?: Maybe<CodeSnippet>;
   /** Create one contact */
   createContact?: Maybe<Contact>;
   /** Create one findMeLink */
@@ -2167,6 +2715,8 @@ export type Mutation = {
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one codeSnippet from _all_ existing stages. Returns deleted document. */
+  deleteCodeSnippet?: Maybe<CodeSnippet>;
   /** Delete one contact from _all_ existing stages. Returns deleted document. */
   deleteContact?: Maybe<Contact>;
   /** Delete one findMeLink from _all_ existing stages. Returns deleted document. */
@@ -2178,6 +2728,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many CodeSnippet documents
+   * @deprecated Please use the new paginated many mutation (deleteManyCodeSnippetsConnection)
+   */
+  deleteManyCodeSnippets: BatchPayload;
+  /** Delete many CodeSnippet documents, return deleted documents */
+  deleteManyCodeSnippetsConnection: CodeSnippetConnection;
   /**
    * Delete many Contact documents
    * @deprecated Please use the new paginated many mutation (deleteManyContactsConnection)
@@ -2207,6 +2764,8 @@ export type Mutation = {
   deleteScheduledRelease?: Maybe<ScheduledRelease>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one codeSnippet */
+  publishCodeSnippet?: Maybe<CodeSnippet>;
   /** Publish one contact */
   publishContact?: Maybe<Contact>;
   /** Publish one findMeLink */
@@ -2218,6 +2777,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many CodeSnippet documents
+   * @deprecated Please use the new paginated many mutation (publishManyCodeSnippetsConnection)
+   */
+  publishManyCodeSnippets: BatchPayload;
+  /** Publish many CodeSnippet documents */
+  publishManyCodeSnippetsConnection: CodeSnippetConnection;
   /**
    * Publish many Contact documents
    * @deprecated Please use the new paginated many mutation (publishManyContactsConnection)
@@ -2243,6 +2809,8 @@ export type Mutation = {
   publishProject?: Maybe<Project>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one codeSnippet */
+  schedulePublishCodeSnippet?: Maybe<CodeSnippet>;
   /** Schedule to publish one contact */
   schedulePublishContact?: Maybe<Contact>;
   /** Schedule to publish one findMeLink */
@@ -2251,6 +2819,8 @@ export type Mutation = {
   schedulePublishProject?: Maybe<Project>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one codeSnippet from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishCodeSnippet?: Maybe<CodeSnippet>;
   /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishContact?: Maybe<Contact>;
   /** Unpublish one findMeLink from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2259,6 +2829,8 @@ export type Mutation = {
   scheduleUnpublishProject?: Maybe<Project>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one codeSnippet from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishCodeSnippet?: Maybe<CodeSnippet>;
   /** Unpublish one contact from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishContact?: Maybe<Contact>;
   /** Unpublish one findMeLink from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2270,6 +2842,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many CodeSnippet documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyCodeSnippetsConnection)
+   */
+  unpublishManyCodeSnippets: BatchPayload;
+  /** Find many CodeSnippet documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyCodeSnippetsConnection: CodeSnippetConnection;
   /**
    * Unpublish many Contact documents
    * @deprecated Please use the new paginated many mutation (unpublishManyContactsConnection)
@@ -2295,6 +2874,8 @@ export type Mutation = {
   unpublishProject?: Maybe<Project>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one codeSnippet */
+  updateCodeSnippet?: Maybe<CodeSnippet>;
   /** Update one contact */
   updateContact?: Maybe<Contact>;
   /** Update one findMeLink */
@@ -2306,6 +2887,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many codeSnippets
+   * @deprecated Please use the new paginated many mutation (updateManyCodeSnippetsConnection)
+   */
+  updateManyCodeSnippets: BatchPayload;
+  /** Update many CodeSnippet documents */
+  updateManyCodeSnippetsConnection: CodeSnippetConnection;
   /**
    * Update many contacts
    * @deprecated Please use the new paginated many mutation (updateManyContactsConnection)
@@ -2333,6 +2921,8 @@ export type Mutation = {
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one codeSnippet */
+  upsertCodeSnippet?: Maybe<CodeSnippet>;
   /** Upsert one contact */
   upsertContact?: Maybe<Contact>;
   /** Upsert one findMeLink */
@@ -2344,6 +2934,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateCodeSnippetArgs = {
+  data: CodeSnippetCreateInput;
 };
 
 
@@ -2372,6 +2967,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteCodeSnippetArgs = {
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
 export type MutationDeleteContactArgs = {
   where: ContactWhereUniqueInput;
 };
@@ -2394,6 +2994,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCodeSnippetsArgs = {
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyCodeSnippetsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
 };
 
 
@@ -2466,6 +3081,12 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishCodeSnippetArgs = {
+  to?: Array<Stage>;
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
 export type MutationPublishContactArgs = {
   to?: Array<Stage>;
   where: ContactWhereUniqueInput;
@@ -2499,6 +3120,24 @@ export type MutationPublishManyAssetsConnectionArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyCodeSnippetsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
+};
+
+
+export type MutationPublishManyCodeSnippetsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
 };
 
 
@@ -2573,6 +3212,14 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishCodeSnippetArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishContactArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -2604,6 +3251,14 @@ export type MutationScheduleUnpublishAssetArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishCodeSnippetArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: CodeSnippetWhereUniqueInput;
 };
 
 
@@ -2639,6 +3294,12 @@ export type MutationUnpublishAssetArgs = {
 };
 
 
+export type MutationUnpublishCodeSnippetArgs = {
+  from?: Array<Stage>;
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
 export type MutationUnpublishContactArgs = {
   from?: Array<Stage>;
   where: ContactWhereUniqueInput;
@@ -2670,6 +3331,24 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCodeSnippetsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyCodeSnippetsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
 };
 
 
@@ -2739,6 +3418,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateCodeSnippetArgs = {
+  data: CodeSnippetUpdateInput;
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
 export type MutationUpdateContactArgs = {
   data: ContactUpdateInput;
   where: ContactWhereUniqueInput;
@@ -2765,6 +3450,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCodeSnippetsArgs = {
+  data: CodeSnippetUpdateManyInput;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyCodeSnippetsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: CodeSnippetUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CodeSnippetManyWhereInput>;
 };
 
 
@@ -2834,6 +3536,12 @@ export type MutationUpdateScheduledReleaseArgs = {
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationUpsertCodeSnippetArgs = {
+  upsert: CodeSnippetUpsertInput;
+  where: CodeSnippetWhereUniqueInput;
 };
 
 
@@ -3459,6 +4167,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single codeSnippet */
+  codeSnippet?: Maybe<CodeSnippet>;
+  /** Retrieve document version */
+  codeSnippetVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple codeSnippets */
+  codeSnippets: Array<CodeSnippet>;
+  /** Retrieve multiple codeSnippets using the Relay connection interface */
+  codeSnippetsConnection: CodeSnippetConnection;
   /** Retrieve a single contact */
   contact?: Maybe<Contact>;
   /** Retrieve document version */
@@ -3541,6 +4257,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryCodeSnippetArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: CodeSnippetWhereUniqueInput;
+};
+
+
+export type QueryCodeSnippetVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryCodeSnippetsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CodeSnippetOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CodeSnippetWhereInput>;
+};
+
+
+export type QueryCodeSnippetsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<CodeSnippetOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<CodeSnippetWhereInput>;
 };
 
 
@@ -3875,7 +4629,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Contact | FindMeLink | Project;
+export type ScheduledOperationAffectedDocument = Asset | CodeSnippet | Contact | FindMeLink | Project;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */

@@ -1,5 +1,6 @@
-import { gql } from "@apollo/client"
 import { GetStaticProps } from "next"
+import { gql } from "@apollo/client"
+
 import Folder from "../components/about-me/Folder"
 import Snippet from "../components/about-me/Snippet"
 import CodeBar from "../components/common/CodeBar"
@@ -7,54 +8,17 @@ import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import ContactLabel from "../components/contact-me/ContactLabel"
 import Accordion, { AccordionItem } from "../components/ui/Accordion"
+
 import useAboutMe from "../hooks/useAboutMe"
 import { client } from "../lib/apollo"
-import { Contact } from "../__generated__/graphql"
-
-const codeSnippets = [
-  {
-    monthsAgo: 13,
-    stars: 3,
-    details:
-      "The above code was made by me 13 months ago, it is a javascript function that builds a repurchase url, and when clicking on the respective link, the customer is redirected to the checkout with all the items purchased in the respective order.\n\nThis feature generated a great source of income for Carrefour, due to the high conversion per click, above 50%!",
-    codeSnippet: `function getRemakeSkus(sellerId, items) {
-  return items.reduce(
-    (initial, item, index, array) =>
-      \`\${initial}sku=\${item.vtexItemId}&qty=\${item.quantity}\${
-        array.length - 1 === index
-          ? \`&seller=\${sellerId}&sc=2\`
-          : \`&seller=\${sellerId}&sc=2&\`
-      }\`,
-    ""
-  )
-}`,
-  },
-  {
-    monthsAgo: 7,
-    stars: 0,
-    details:
-      "In this case, we have a code that is simple to read, but extremely important, it is part of a BFF (backend for frontend), and is responsible for fetching details of an order. Ensuring sensitive information such as application tokens, and whether the logged in user owns the order.",
-    codeSnippet: `async function getOrderDetail(args, clients, vtex) => {
-  const session = await clients.sessions.getSession(vtex.token)
-  
-  const customerEmail = sessionData.user.email
-  
-  const order = await clients.orders.orderDetail(args)
-
-  if (customerEmail !== order.customerEmail) {
-    throw new Error('Access Denied')
-  }
-  
-  return order
-},`,
-  },
-]
+import { CodeSnippet, Contact } from "../__generated__/graphql"
 
 interface AboutMeProps {
   contacts: Contact[]
+  codeSnippets: CodeSnippet[]
 }
 
-function AboutMe({ contacts }: AboutMeProps) {
+function AboutMe({ contacts, codeSnippets }: AboutMeProps) {
   const { folders, activeArchive, setActiveArchive } = useAboutMe()
 
   return (
@@ -148,6 +112,13 @@ const GET_CONTACT_ME = gql`
         width
         height
       }
+    }
+
+    codeSnippets {
+      monthsAgo
+      stars
+      details
+      codeSnippet
     }
   }
 `
