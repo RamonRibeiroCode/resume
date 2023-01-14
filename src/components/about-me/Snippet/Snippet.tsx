@@ -1,5 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion"
 import Image from "next/image"
+
 import User from "../../../assets/imgs/about-me/ramon.jpeg"
 import Icon from "../../ui/Icon"
 import SintaxHighlight from "../../ui/SintaxHighlight"
@@ -28,6 +29,8 @@ function Snippet({
               src={User}
               className="w-9 h-9 rounded-full"
               alt="User Owner of Code Snippet"
+              width={387}
+              height={280}
             />
             <div className="ml-3">
               <p className="text-sm text-primary-blue-code">@ramonribeiro</p>

@@ -1,13 +1,21 @@
+import { GetStaticProps } from "next"
+import { gql } from "@apollo/client"
+
 import LabelPage from "../components/common/LabelPage"
 import SideBar from "../components/common/SideBar"
 import CodeBar from "../components/common/CodeBar"
-
-import useProjects from "../hooks/useProjects"
 import Project from "../components/projects/Project"
 import AppliedTags from "../components/projects/AppliedTags"
 import Filters from "../components/projects/Filters"
+import { Project as ProjectType } from "../__generated__/graphql"
+import useProjects from "../hooks/useProjects"
+import { client } from "../lib/apollo"
 
-function Projects() {
+interface ProjectsProps {
+  projects: ProjectType[]
+}
+
+function Projects({ projects }: ProjectsProps) {
   const {
     tags,
     tagsApplied,
@@ -15,7 +23,7 @@ function Projects() {
     emptyFilters,
     handleApplyFilter,
     setTagsApplied,
-  } = useProjects()
+  } = useProjects(projects)
 
   return (
     <div className="flex flex-col flex-1 xl:flex-row">
@@ -46,11 +54,11 @@ function Projects() {
             {filteredProjects.map((project, index) => (
               <Project
                 key={project.name}
-                name={project.name}
                 position={index + 1}
+                name={project.name}
                 description={project.description}
                 href={project.href}
-                imageUrl={project.imageUrl}
+                imageUrl={project.image.url}
               />
             ))}
           </ul>
@@ -60,6 +68,38 @@ function Projects() {
       </div>
     </div>
   )
+}
+
+const GET_PROJECTS = gql`
+  query GetProjects {
+    projects {
+      name
+      href
+      description
+      tags
+      image {
+        url
+      }
+    }
+  }
+`
+
+interface PageQuery {
+  projects: ProjectType[]
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await client.query<PageQuery>({
+    query: GET_PROJECTS,
+  })
+
+  const queries = response.data
+
+  return {
+    props: {
+      ...queries,
+    },
+  }
 }
 
 export default Projects

@@ -1,0 +1,10 @@
+* {
+  font-family: "Fira Code", -apple-system, system-ui, BlinkMacSystemFont,
+    sans-serif;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}

@@ -8,7 +8,7 @@ interface SintaxHighlightProps {
 }
 
 function SintaxHighlight({
-  language = "javascript",
+  language = "jsx",
   className,
   children,
 }: SintaxHighlightProps) {

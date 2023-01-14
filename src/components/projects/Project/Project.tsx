@@ -1,8 +1,8 @@
 import Image, { StaticImageData } from "next/image"
 
 interface ProjectProps {
-  name: string
   position: number
+  name: string
   href: string
   imageUrl: string | StaticImageData
   description: string
@@ -29,7 +29,13 @@ function Project({
 
       <article className="border border-secondary-gray rounded-2xl overflow-hidden">
         <a href={href}>
-          <Image className="w-full" src={imageUrl} alt="" />
+          <Image
+            className="w-full"
+            src={imageUrl}
+            alt="Project Image"
+            width={387}
+            height={280}
+          />
           <div className="p-6">
             <p className="text-secondary-gray">{description}</p>
 

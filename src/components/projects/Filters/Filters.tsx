@@ -1,14 +1,13 @@
 import Accordion, { AccordionItem } from "../../ui/Accordion"
 import Checkbox from "../../ui/Checkbox"
 import Icon from "../../ui/Icon"
-
 import { getIconDimensions } from "../../../helpers/projects"
-import { Tech } from "../../../hooks/useProjects"
+import { ProjectTag } from "../../../__generated__/graphql"
 
 interface FiltersProps {
-  tags: Tech[]
-  tagsApplied: Tech[]
-  handleApplyFilter: (tag: Tech) => void
+  tags: ProjectTag[]
+  tagsApplied: ProjectTag[]
+  handleApplyFilter: (tag: ProjectTag) => void
 }
 
 function Filters({ tags, tagsApplied, handleApplyFilter }: FiltersProps) {

@@ -1,9 +1,10 @@
+import { ProjectTag } from "../../../__generated__/graphql"
 import Icon from "../Icon"
 
 interface CheckboxProps {
-  id: string
+  id: ProjectTag
   active: boolean
-  onClick: (id: any) => void
+  onClick: (id: ProjectTag) => void
 }
 
 function Checkbox({ id, active, onClick }: CheckboxProps) {
