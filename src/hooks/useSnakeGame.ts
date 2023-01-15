@@ -101,47 +101,32 @@ const useGameLogic = ({ canvasHeight, canvasWidth }: UseGameLogicProps) => {
   }
 
   const onKeyDownHandler = (event: KeyboardEvent) => {
-    switch (event.code) {
-      case "KeyS":
-        if (directionRef.current !== Direction.UP) {
-          setDirection(Direction.DOWN)
-        }
-        break
-      case "ArrowDown":
-        if (directionRef.current !== Direction.UP) {
-          setDirection(Direction.DOWN)
-        }
-        break
-      case "KeyW":
-        if (directionRef.current !== Direction.DOWN) {
-          setDirection(Direction.UP)
-        }
-        break
-      case "ArrowUp":
-        if (directionRef.current !== Direction.DOWN) {
-          setDirection(Direction.UP)
-        }
-        break
-      case "KeyD":
-        if (directionRef.current !== Direction.LEFT) {
-          setDirection(Direction.RIGHT)
-        }
-        break
-      case "ArrowRight":
-        if (directionRef.current !== Direction.LEFT) {
-          setDirection(Direction.RIGHT)
-        }
-        break
-      case "KeyA":
-        if (directionRef.current !== Direction.RIGHT) {
-          setDirection(Direction.LEFT)
-        }
-        break
-      case "ArrowLeft":
-        if (directionRef.current !== Direction.RIGHT) {
-          setDirection(Direction.LEFT)
-        }
-        break
+    if (
+      (event.code === "KeyS" || event.code === "ArrowDown") &&
+      directionRef.current !== Direction.UP
+    ) {
+      setDirection(Direction.DOWN)
+    }
+
+    if (
+      (event.code === "KeyW" || event.code === "ArrowUp") &&
+      directionRef.current !== Direction.DOWN
+    ) {
+      setDirection(Direction.UP)
+    }
+
+    if (
+      (event.code === "KeyD" || event.code === "ArrowRight") &&
+      directionRef.current !== Direction.LEFT
+    ) {
+      setDirection(Direction.RIGHT)
+    }
+
+    if (
+      (event.code === "KeyA" || event.code === "ArrowLeft") &&
+      directionRef.current !== Direction.RIGHT
+    ) {
+      setDirection(Direction.LEFT)
     }
   }
 
