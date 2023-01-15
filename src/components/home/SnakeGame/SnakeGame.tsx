@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useCallback, useRef } from "react"
 
 import Canvas from "../Canvas"
 import { draw } from "../../../helpers/home/snakeGame"
@@ -22,9 +22,12 @@ function Game() {
     canvasRef,
   })
 
-  const drawGame = (ctx: CanvasRenderingContext2D) => {
-    draw({ ctx, snakeBody, foodPosition })
-  }
+  const drawGame = useCallback(
+    (ctx: CanvasRenderingContext2D) => {
+      draw({ ctx, snakeBody, foodPosition })
+    },
+    [foodPosition, snakeBody]
+  )
 
   const isGameEnded =
     gameState === GameState.GAME_OVER || gameState === GameState.WON

@@ -19,7 +19,12 @@ export const draw = ({ ctx, snakeBody, foodPosition }: DrawArgs) => {
   snakeBody.forEach((segment, index) => {
     const snakeHead = index !== snakeBody.length - 1
 
-    snakeHead ? (ctx.fillStyle = "#43D9AD") : (ctx.fillStyle = "#43d9ad33")
+    if (snakeHead) {
+      ctx.fillStyle = "#43D9AD"
+    } else {
+      ctx.fillStyle = "#43d9ad33"
+    }
+
     ctx.fillRect(segment.x, segment.y, SEGMENT_SIZE, SEGMENT_SIZE)
   })
 }
