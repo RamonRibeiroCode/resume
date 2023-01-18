@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
 
 import Spinner from "../ui/Spinner"
@@ -9,37 +9,6 @@ export default function CheckoutForm() {
 
   const [message, setMessage] = useState<null | string>(null)
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    if (!stripe) {
-      return
-    }
-
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    )
-
-    if (!clientSecret) {
-      return
-    }
-
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent?.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!")
-          break
-        case "processing":
-          setMessage("Your payment is processing.")
-          break
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.")
-          break
-        default:
-          setMessage("Something went wrong.")
-          break
-      }
-    })
-  }, [stripe])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -69,21 +38,24 @@ export default function CheckoutForm() {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement
-        id="payment-element"
         options={{
-          layout: "tabs",
+          layout: "accordion",
         }}
       />
 
       <button
-        className="bg-slate-500 mt-4 px-4 py-2"
+        className="flex justify-center items-center bg-secondary-light-gray mt-4 px-8 py-3 rounded-lg text-sm text-secondary-white"
         disabled={isLoading || !stripe || !elements}
         id="submit"
       >
-        {isLoading ? <Spinner /> : "Pay now"}
+        {isLoading ? <Spinner /> : "Confirmation"}
       </button>
 
-      {message && <div id="payment-message">{message}</div>}
+      {message && (
+        <div id="payment-message" className="text-accent-orange text-xs mt-3">
+          {message}
+        </div>
+      )}
     </form>
   )
 }

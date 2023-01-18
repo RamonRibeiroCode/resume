@@ -19,6 +19,10 @@ const headerLinks = [
     href: "/projects",
   },
   {
+    title: "_donate",
+    href: "/donate",
+  },
+  {
     title: "_contact-me",
     href: "/contact-me",
   },

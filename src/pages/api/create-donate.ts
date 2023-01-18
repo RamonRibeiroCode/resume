@@ -6,13 +6,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 })
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
-  //   if (request.method !== "POST") {
-  //     response.setHeader("Allow", "POST")
-  //     return response.status(405).end("Method Not Allowed")
-  //   }
+  const { amount } = request.body
+
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "POST")
+    return response.status(405).end("Method Not Allowed")
+  }
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1000,
+    amount,
     currency: "BRL",
     automatic_payment_methods: {
       enabled: true,
@@ -21,6 +23,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
 
   response.send({
     clientSecret: paymentIntent.client_secret,
+    paymentIntentId: paymentIntent.id,
   })
 }
 
