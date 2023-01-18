@@ -147,7 +147,7 @@ function Donate({ contacts }: DonateProps) {
                 </p>
 
                 <Elements options={options} stripe={stripePromise}>
-                  <Checkout amount={amount} />
+                  <Checkout />
                 </Elements>
               </div>
             )}

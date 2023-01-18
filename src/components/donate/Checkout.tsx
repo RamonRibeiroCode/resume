@@ -1,13 +1,9 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
 
 import Spinner from "../ui/Spinner"
 
-interface CheckoutProps {
-  amount: number
-}
-
-export default function Checkout({ amount }: CheckoutProps) {
+export default function Checkout() {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -20,6 +16,8 @@ export default function Checkout({ amount }: CheckoutProps) {
     if (!stripe || !elements) {
       return
     }
+
+    elements.fetchUpdates()
 
     setIsLoading(true)
 
@@ -38,10 +36,6 @@ export default function Checkout({ amount }: CheckoutProps) {
 
     setIsLoading(false)
   }
-
-  useEffect(() => {
-    elements?.getElement(PaymentElement)?.update({ amount: amount })
-  }, [amount, elements])
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
