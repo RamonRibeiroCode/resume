@@ -50,11 +50,15 @@ function Donate({ contacts }: DonateProps) {
   const [amount, setAmount] = useState(donates[0])
 
   const getDonateSecret = useCallback(async () => {
+    if (paymentIntentId) {
+      return
+    }
+
     const response = await axios.post("/api/create-donate", { amount })
 
     setPaymentIntentId(response.data.paymentIntentId)
     setClientSecret(response.data.clientSecret)
-  }, [amount])
+  }, [amount, paymentIntentId])
 
   const handleUpdateDonate = async (donate: number) => {
     setAmount(donate)
