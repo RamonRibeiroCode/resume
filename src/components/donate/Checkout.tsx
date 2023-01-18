@@ -17,7 +17,7 @@ export default function Checkout() {
       return
     }
 
-    elements.fetchUpdates()
+    await elements.fetchUpdates()
 
     setIsLoading(true)
 
