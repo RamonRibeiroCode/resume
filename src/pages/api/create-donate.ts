@@ -13,18 +13,22 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     return response.status(405).end("Method Not Allowed")
   }
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount,
-    currency: "BRL",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  })
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: "BRL",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    })
 
-  response.send({
-    clientSecret: paymentIntent.client_secret,
-    paymentIntentId: paymentIntent.id,
-  })
+    return response.send({
+      clientSecret: paymentIntent.client_secret,
+      paymentIntentId: paymentIntent.id,
+    })
+  } catch (error) {
+    return response.send({ error })
+  }
 }
 
 export default handler
