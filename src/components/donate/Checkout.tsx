@@ -3,7 +3,7 @@ import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
 
 import Spinner from "../ui/Spinner"
 
-export default function CheckoutForm() {
+function Checkout() {
   const stripe = useStripe()
   const elements = useElements()
 
@@ -18,6 +18,8 @@ export default function CheckoutForm() {
     }
 
     setIsLoading(true)
+
+    await elements.fetchUpdates()
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -59,3 +61,5 @@ export default function CheckoutForm() {
     </form>
   )
 }
+
+export default Checkout
