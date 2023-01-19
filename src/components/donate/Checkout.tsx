@@ -3,6 +3,8 @@ import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
 
 import Spinner from "../ui/Spinner"
 
+const productionMode = process.env.NODE_ENV === "production"
+
 function Checkout() {
   const stripe = useStripe()
   const elements = useElements()
@@ -24,7 +26,9 @@ function Checkout() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/donate",
+        return_url: productionMode
+          ? "https://ramon-resume.vercel.app/donate"
+          : "http://localhost:3000/donate",
       },
     })
 

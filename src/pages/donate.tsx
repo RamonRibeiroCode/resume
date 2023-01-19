@@ -4,6 +4,8 @@ import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import { gql } from "@apollo/client"
 import { GetStaticProps } from "next"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
 import Checkout from "../components/donate/Checkout"
 import SideBar from "../components/common/SideBar"
@@ -48,6 +50,9 @@ function Donate({ contacts }: DonateProps) {
   const [clientSecret, setClientSecret] = useState("")
   const [paymentIntentId, setPaymentIntentId] = useState("")
   const [amount, setAmount] = useState(donates[0])
+  const { query } = useRouter()
+
+  const onSuccessPage = query.redirect_status === "succeeded"
 
   const getDonateSecret = useCallback(async () => {
     if (paymentIntentId) {
@@ -110,41 +115,61 @@ function Donate({ contacts }: DonateProps) {
 
         <div className="flex flex-col xl:flex-row h-[calc(100%_-_41px)]">
           <div className="flex-1 flex flex-col justify-center items-center xl:p-6">
-            <button className="text-secondary-white">Choose your donate</button>
+            {onSuccessPage ? (
+              <>
+                <span className="text-secondary-white">
+                  Thanks for the donation
+                </span>
 
-            <div className="w-full flex justify-center my-8">
-              {donates.map((donate) => {
-                return (
-                  <button
-                    key={donate}
-                    onClick={() => handleUpdateDonate(donate)}
-                    className={`w-full max-w-[80px] flex justify-center items-center py-3 bg-secondary-light-gray rounded-lg text-sm text-secondary-white mr-4 last:mr-0 ${
-                      donate === amount
-                        ? "bg-secondary-white text-secondary-light-gray"
-                        : ""
-                    }`}
-                  >
-                    R$ {donate / 100}
-                  </button>
-                )
-              })}
-            </div>
-
-            <p className="text-secondary-gray mx-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book.
-            </p>
+                <Link
+                  href="/donate"
+                  className="flex justify-center items-center bg-secondary-light-gray mt-4 px-8 py-3 rounded-lg text-sm text-secondary-white"
+                >
+                  Donate Again
+                </Link>
+              </>
+            ) : (
+              <>
+                <button className="text-secondary-white">
+                  Choose your donate
+                </button>
+                <div className="w-full flex justify-center my-8">
+                  {donates.map((donate) => {
+                    return (
+                      <button
+                        key={donate}
+                        onClick={() => handleUpdateDonate(donate)}
+                        className={`w-full max-w-[80px] flex justify-center items-center py-3 bg-secondary-light-gray rounded-lg text-sm text-secondary-white mr-4 last:mr-0 ${
+                          donate === amount
+                            ? "bg-secondary-white text-secondary-light-gray"
+                            : ""
+                        }`}
+                      >
+                        R$ {donate / 100}
+                      </button>
+                    )
+                  })}
+                </div>
+                <p className="text-secondary-gray xl:mx-4">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the standard dummy
+                  text ever since the 1500s, when an unknown printer took a
+                  galley of type and scrambled it to make a type specimen book.
+                </p>
+              </>
+            )}
           </div>
-
-          <div className="flex-1 flex  justify-center items-center xl:border-l border-line-gray p-6">
+          <div className="flex-1 flex  justify-center items-center my-4 xl:border-l border-line-gray xl:p-6">
             {clientSecret && (
               <div className="w-full max-w-[420px]">
-                <p className="text-center text-secondary-gray mb-8">
-                  Valor escolhido{" "}
-                  <span className="text-secondary-white">R${amount / 100}</span>
-                </p>
+                {onSuccessPage && (
+                  <p className="text-center text-secondary-gray mb-8">
+                    Chosen value{" "}
+                    <span className="text-secondary-white">
+                      R${amount / 100}
+                    </span>
+                  </p>
+                )}
 
                 <Elements options={options} stripe={stripePromise}>
                   <Checkout />
