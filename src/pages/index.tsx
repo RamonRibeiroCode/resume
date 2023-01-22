@@ -14,7 +14,7 @@ function Home() {
               Hi all. I am
             </h1>
             <h2 className="text-5xl text-secondary-off-white leading-none -ml-1 my-2 xs:text-heading">
-              Ramon Ribeiro
+              Arthur Nakao
             </h2>
 
             <p className="text-lg text-accent-green xs:text-xl xl:text-3xl xl:text-secondary-purple">
