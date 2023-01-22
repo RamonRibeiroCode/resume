@@ -10,8 +10,8 @@
     "eslint": "eslint --ext js,ts,jsx,tsx .",
     "lhci": "lhci autorun",
     "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json}\"",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
     "codegen": "graphql-codegen",
     "codegen:watch": "graphql-codegen -w"
   },
