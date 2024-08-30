@@ -34,7 +34,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Ramon Ribeiro</title>
         <meta name="description" content="Ramon Ribeiro Resume" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-adsense-account" content="ca-pub-4530146041181558" />
         <link rel="icon" href="/favicon.ico" />
+
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4530146041181558"
+          crossOrigin="anonymous"
+        />
       </Head>
 
       <Script id="google-tag-manager" strategy="afterInteractive">
