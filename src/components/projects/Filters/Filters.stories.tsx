@@ -4,15 +4,12 @@ import { useArgs } from "@storybook/client-api"
 import Filters from "./Filters"
 import useProjects from "../../../hooks/useProjects"
 import { Project, ProjectTag } from "../../../__generated__/graphql"
-import projectImage1 from "../../../assets/imgs/projects/project-1.jpg"
-import projectImage2 from "../../../assets/imgs/projects/project-2.jpg"
-import projectImage3 from "../../../assets/imgs/projects/project-3.jpg"
 
 const projects = [
   {
     name: "VTEX Community Starter",
     image: {
-      url: projectImage1,
+      url: null,
     },
     description:
       "Project made in a hackathon in 48 hours at a face-to-face event, the website won the competition and is open to developers who want a template to build VTEX stores.",
@@ -22,7 +19,7 @@ const projects = [
   {
     name: "Carrefour Market Store",
     image: {
-      url: projectImage2,
+      url: null,
     },
     description:
       "Carrefour e-commerce (largest supermarket in Brazil), where different types of food are sold.",
@@ -32,7 +29,7 @@ const projects = [
   {
     name: "Carrefour My Account",
     image: {
-      url: projectImage3,
+      url: null,
     },
     description:
       '"My account" on the Carrefour website, where customers can view their orders, request changes and cancellations, and be able to repurchase some items, among other options.',
@@ -65,7 +62,7 @@ const Template: ComponentStory<typeof Filters> = ({ ...args }) => {
     updateArgs({ tagsApplied: [...tagsApplied, tag] })
   }
 
-  return <Filters {...args} tags={tags} handleApplyFilter={handleApplyFilter} />
+  return <></>
 }
 
 export const Default = Template.bind({})
